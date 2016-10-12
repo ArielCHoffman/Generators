@@ -68,8 +68,9 @@
             "members": [
                 {
                     "type": {
-                        "name": "HardwareInfo object"
+                        "name": "hardwareInfo"
                     }, 
+                    "documentation": "Hardware information for all nodes and drives in the cluster. Each object in this output is labeled with the nodeID of the given node.", 
                     "name": "clusterHardwareInfo"
                 }
             ]
@@ -79,8 +80,9 @@
             "members": [
                 {
                     "type": {
-                        "name": "Hardware object"
+                        "name": "hardware"
                     }, 
+                    "documentation": "List of hardware information and current settings.", 
                     "name": "hardwareConfig"
                 }
             ]
@@ -90,8 +92,9 @@
             "members": [
                 {
                     "type": {
-                        "name": "HardwareInfo object"
+                        "name": "hardwareInfo"
                     }, 
+                    "documentation": "Hardware information for the specified nodeID. Each object in this output is labeled with the nodeID of the given node.", 
                     "name": "nodeHardwareInfo"
                 }
             ]
@@ -101,8 +104,9 @@
             "members": [
                 {
                     "type": {
-                        "name": "JSON Object"
+                        "name": "Attributes"
                     }, 
+                    "documentation": "Arrays of events and errors detected on the NVRAM card.", 
                     "name": "nvramInfo"
                 }
             ]

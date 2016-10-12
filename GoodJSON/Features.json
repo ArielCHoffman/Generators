@@ -1,0 +1,59 @@
+{
+    "methods": [
+        {
+            "name": "EnableFeature", 
+            "returnInfo": {
+                "type": "EnableFeatureResult"
+            }, 
+            "documentation": "EnableFeature allows you to enable cluster features that are disabled by default.", 
+            "params": [
+                {
+                    "name": "feature", 
+                    "documentation": "Valid values:vvols: Enable the Virtual Volumes (VVOLs) cluster feature.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "string"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "GetFeatureStatus", 
+            "returnInfo": {
+                "type": "GetFeatureStatusResult"
+            }, 
+            "documentation": "GetFeatureStatus allows you to retrieve the status of a cluster feature.", 
+            "params": [
+                {
+                    "name": "feature", 
+                    "documentation": "Valid values:vvols: Enable the Virtual Volumes (VVOLs) cluster feature.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }
+    ], 
+    "types": [
+        {
+            "name": "EnableFeatureResult", 
+            "members": []
+        }, 
+        {
+            "name": "GetFeatureStatusResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+							"Objects"
+						]
+                    }, 
+                    "name": "features"
+                }
+            ]
+        }
+    ]
+}

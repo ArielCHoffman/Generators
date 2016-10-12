@@ -1,0 +1,165 @@
+{
+    "methods": [
+        {
+            "name": "GetHardwareInfo", 
+            "returnInfo": {
+                "type": "GetHardwareInfoResult"
+            }, 
+            "documentation": "GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.", 
+            "params": [
+                {
+                    "type": {
+                        "name": "Boolean "
+                    }, 
+                    "documentation": "Set the \"force\" parameter to true to run on all nodes in the cluster.", 
+                    "name": "force"
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListDriveStats", 
+            "returnInfo": {
+                "type": "ListDriveStatsResult"
+            }, 
+            "documentation": "ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.", 
+            "params": [
+                {
+                    "name": "drives", 
+                    "documentation": "Optional list of DriveIDs for which to return drive statistics. If you omit this parameter, measurements for all drives are returned.", 
+                    "Default Value": "None", 
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListVolumeStats", 
+            "returnInfo": {
+                "type": "ListVolumeStatsResult"
+            }, 
+            "documentation": "ListVolumeStats returns high-level activity measurements for a single volume, list of volumes, or all volumes (if you omit the volumeIDs parameter). Measurement values are cumulative from the creation of the volume.", 
+            "params": [
+                {
+                    "name": "volumeIDs", 
+                    "documentation": "List of volumes from which to retrieve activity information.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "release": "Private", 
+            "returnInfo": {
+                "type": "ListISCSISessionsResult"
+            }, 
+            "documentation": "You can use ListISCSISessions to return iSCSI connection information for volumes in the cluster.", 
+            "name": "ListISCSISessions"
+        }, 
+        {
+            "release": "Private", 
+            "returnInfo": {
+                "type": "ListFibreChannelSessionsResult"
+            }, 
+            "documentation": "The ListFibreChannelSessions method enables you to retrieve information about the active  sessions on a cluster. ", 
+            "name": "ListFibreChannelSessions"
+        }, 
+        {
+            "release": "Private", 
+            "returnInfo": {
+                "type": "GetLimitsResult"
+            }, 
+            "documentation": "GetLimits enables you to retrieve the limit values set by the API. These values might change between releases of  Element, but do not change without an update to the system. Knowing the limit values set by the API can be useful when writing API scripts for user-facing tools.NOTE: The GetLimits method returns the limits for the current software version regardless of the API endpoint version used to pass the method.", 
+            "name": "GetLimits"
+        }
+    ], 
+    "types": [
+        {
+            "name": "GetHardwareInfoResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "hardwareInfo"
+                    }, 
+                    "documentation": "Hardware information for this node. ", 
+                    "name": "hardwareInfo"
+                }
+            ]
+        }, 
+        {
+            "name": "ListDriveStatsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "Drive Stats Objec"
+                        ]
+                    }, 
+                    "documentation": "List of drive activity information for each drive.", 
+                    "name": "driveStats"
+                }, 
+                {
+                    "type": {
+                        "name": [
+                            "Attributes"
+                        ]
+                    }, 
+                    "documentation": "If there are errors retrieving information about a drive, this list contains the driveID and associated error message. Always present, and empty if there are no errors.", 
+                    "name": "errors"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVolumeStatsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "VolumeStats object"
+                        ]
+                    }, 
+                    "documentation": "List of volume activity information.", 
+                    "name": "volumeStats"
+                }
+            ]
+        }, 
+        {
+            "name": "ListISCSISessionsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "ISCSISession"
+                    }, 
+                    "documentation": "Information for each iSCSI session.", 
+                    "name": "sessions"
+                }
+            ]
+        }, 
+        {
+            "name": "ListFibreChannelSessionsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "Fibre Channel Sessions Object"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing active  sessions on the cluster.", 
+                    "name": "sessions"
+                }
+            ]
+        }, 
+        {
+            "name": "GetLimitsResult"
+        }
+    ]
+}

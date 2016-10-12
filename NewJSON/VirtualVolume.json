@@ -1,0 +1,170 @@
+{
+    "methods": [
+        {
+            "release": "Private", 
+            "returnInfo": {
+                "type": "GetVirtualVolumeCountResult"
+            }, 
+            "documentation": "GetVirtualVolumeCount enables you to retrieve the number of virtual volumes currently in the system.", 
+            "name": "GetVirtualVolumeCount"
+        }, 
+        {
+            "name": "ListVirtualVolumeBindings", 
+            "returnInfo": {
+                "type": "ListVirtualVolumeBindingsResult"
+            }, 
+            "documentation": "ListVirtualVolumeBindings returns a list of all virtual volumes in the cluster that are bound to protocol endpoints. ", 
+            "params": [
+                {
+                    "name": "virtualVolumeBindingIDs", 
+                    "documentation": "A list of virtual volume binding IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume bindings.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListVirtualVolumeHosts", 
+            "returnInfo": {
+                "type": "ListVirtualVolumeHostsResult"
+            }, 
+            "documentation": "ListVirtualVolumeHosts returns a list of all virtual volume hosts known to the cluster. A virtual volume host is a  ESX\u00ae host that has initiated a session with the VASA API provider.", 
+            "params": [
+                {
+                    "name": "virtualVolumeHostIDs", 
+                    "documentation": "A list of virtual volume host IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume hosts.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "virtualVolumeHostID UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListVirtualVolumeTasks", 
+            "returnInfo": {
+                "type": "ListVirtualVolumeTasksResult"
+            }, 
+            "documentation": "ListVirtualVolumeTasks returns a list of virtual volume tasks in the system. This method does not remove completed tasks from the system.", 
+            "params": [
+                {
+                    "name": "virtualVolumeTaskIDs", 
+                    "documentation": "A list of virtual volume task IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume tasks.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "virtualVolumeTaskID UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListVolumeStatsByVirtualVolume", 
+            "returnInfo": {
+                "type": "ListVolumeStatsByVirtualVolumeResult"
+            }, 
+            "documentation": "ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.", 
+            "params": [
+                {
+                    "name": "startVirtualVolumeID", 
+                    "documentation": "The ID of the virtual volume at which to begin the list.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "UUIDType"
+                    }
+                }, 
+                {
+                    "name": "virtualVolumeIDs", 
+                    "documentation": "A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "virtualVolumeID UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }
+    ], 
+    "types": [
+        {
+            "name": "GetVirtualVolumeCountResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "The number of virtual volumes currently in the system.", 
+                    "name": "count"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVirtualVolumeBindingsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "binding (Virtual Volumes"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing all virtual volumes in the cluster that are bound to protocol endpoints. ", 
+                    "name": "bindings"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVirtualVolumeHostsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "host (Virtual Volumes"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing the virtual volume hosts in the cluster.", 
+                    "name": "hosts"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVirtualVolumeTasksResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "task (Virtual Volumes"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing the virtual volume tasks currently in the system.", 
+                    "name": "tasks"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVolumeStatsByVirtualVolumeResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "Attributes"
+                        ]
+                    }, 
+                    "documentation": "A list of objects detailing statistics for each volume associated with a virtual volume.", 
+                    "name": "volumeStats"
+                }
+            ]
+        }
+    ]
+}

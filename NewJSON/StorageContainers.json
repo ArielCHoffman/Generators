@@ -1,0 +1,151 @@
+{
+    "methods": [
+        {
+            "name": "CreateStorageContainer", 
+            "returnInfo": {
+                "type": "CreateStorageContainerResult"
+            }, 
+            "documentation": "CreateStorageContainer enables you to create a Virtual Volume (VVOL) storage container. Storage containers are associated with a  account, and are used for reporting and resource allocation. Storage containers can only be associated with virtual volumes. You need at least one storage container to use the Virtual Volumes feature.", 
+            "params": [
+                {
+                    "name": "name", 
+                    "documentation": "Name of the storage container. Follows  account naming restrictions.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "accountID", 
+                    "documentation": "Non-storage container account that will become a storage container.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "initiatorSecret", 
+                    "documentation": "The secret for CHAP authentication for the initiator.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "targetSecret", 
+                    "documentation": "The secret for CHAP authentication for the target.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListStorageContainers", 
+            "returnInfo": {
+                "type": "ListStorageContainersResult"
+            }, 
+            "documentation": "ListStorageContainers enables you to retrieve information about all virtual volume storage containers known to the system. ", 
+            "params": [
+                {
+                    "name": "storageContainerIDs", 
+                    "documentation": "A list of storage container IDs for which to retrieve information. If you omit this parameter, the method returns information about all storage containers in the system.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "storageContainerID UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "GetStorageContainerEfficiency", 
+            "returnInfo": {
+                "type": "GetStorageContainerEfficiencyResult"
+            }, 
+            "documentation": "GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.", 
+            "params": [
+                {
+                    "name": "storageContainerID", 
+                    "documentation": "The ID of the storage container for which to retrieve efficiency information.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "integer"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }
+    ], 
+    "types": [
+        {
+            "name": "CreateStorageContainerResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "Storage Container Object"
+                    }, 
+                    "documentation": "Information about the newly created storage container.", 
+                    "name": "storageContainer"
+                }
+            ]
+        }, 
+        {
+            "name": "ListStorageContainersResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "storageContaine"
+                        ]
+                    }, 
+                    "documentation": "List of objects containing information about all storageContainers in the system.", 
+                    "name": "storageContainers"
+                }
+            ]
+        }, 
+        {
+            "name": "GetStorageContainerEfficiencyResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "Float"
+                    }, 
+                    "name": "compression"
+                }, 
+                {
+                    "type": {
+                        "name": "Float"
+                    }, 
+                    "name": "deduplication"
+                }, 
+                {
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }, 
+                    "documentation": "The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.", 
+                    "name": "missingVolumes"
+                }, 
+                {
+                    "type": {
+                        "name": "Float"
+                    }, 
+                    "name": "thinProvisioning"
+                }, 
+                {
+                    "type": {
+                        "name": "ISO 8601 data string"
+                    }, 
+                    "documentation": "The last time efficiency data was collected after Garbage Collection (GC).", 
+                    "name": "timestamp"
+                }
+            ]
+        }
+    ]
+}

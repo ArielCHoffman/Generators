@@ -69,6 +69,43 @@ class MyHTMLParser(HTMLParser):
 			
 			return
 
+def fixParameter(parameter):
+	# Add the optional/required issues in
+	paramType = dict()
+	paramType["name"] = parameter.get("Type", "")
+	parameter["type"] = paramType
+	if("Type" in parameter.keys()):
+		del parameter["Type"]
+	if("optional" in parameter.get("Default Value", "").lower()):
+		del parameter["Default Value"]
+		paramType["optional"] = True
+	if("required" in parameter.get("Default Value", "").lower()):
+		del parameter["Default Value"]
+		paramType["optional"] = False
+	
+	# Adjust the capitalization at a parameter level
+	if("Name" in parameter.keys()):
+		parameter["name"] = parameter.pop("Name")
+	if("name" in parameter.keys()):
+		parameter["name"] = parameter["name"][:1].lower() + parameter["name"][1:]
+	if("Description" in parameter.keys()):
+		parameter["documentation"] = parameter.pop("Description")
+		parameter["documentation"] = re.sub(r'[\t\n\r]', '', parameter["documentation"])
+	if("Type" in parameter.keys()):
+		parameter["type"] = parameter.pop("Type")
+		
+	# Fix the parameter type name
+	parameter["type"]["name"] = fixParameterTypeName(parameter["type"]["name"])
+
+def fixParameterTypeName(name):
+	if(name.lower() in docTypeToJSONTypeMap.keys()):
+		name = docTypeToJSONTypeMap[name.lower()]
+	if(name.lower() in lowerCaseTypes):
+		name = name.lower()
+	if("array of" in name.lower()):
+		name = [fixParameterTypeName(re.sub("array of", "", name, flags=re.I).strip()[:-1])]
+	return name
+
 # Steps:
 # 1. Import the existing JSON files.
 # 2. Make a compiled hash of types and methods
@@ -95,7 +132,8 @@ for file in files:
 # Read through the files and make a method/object
 myAggregatedTypes = []
 myAggregatedMethods = []
-docTypeToJSONTypeMap = {'json objects': "Attribute"}
+docTypeToJSONTypeMap = {'json object': "Attributes", 'json':"Attributes", "iscsi session object": "ISCSISession", "Cluster Admin Object": "ClusterAdmin", "JSON Obejct":"Attributes",
+	"hardwareinfo object":"hardwareInfo", "hardware object":"hardware"}
 lowerCaseTypes = ["integer", "string", "boolean"]
 
 rootdir = "C:\\Projects2016\\API_ElementOS_9.0\\Content\\00_API Reference Guide"
@@ -112,10 +150,18 @@ for root, subFolders, files in os.walk(rootdir):
 			# instantiate the parser and fed it some HTML
 			parser = MyHTMLParser()
 			parser.feed(data)
+			
+			# First, handle the objects...
 			if("Common Objects" in subFolderPath):
 				object = copy.deepcopy(parser.method)
 				if("Object Members" in object.keys()):
 					object["members"] = object.pop("Object Members")
+				else:
+					object["members"] = []
+				
+				# Add the optional/required issues in
+				for parameter in object["members"]:
+					fixParameter(parameter)
 				myAggregatedTypes += [object]
 			if("Methods" in subFolderPath):
 				method = copy.deepcopy(parser.method)
@@ -129,62 +175,30 @@ for root, subFolders, files in os.walk(rootdir):
 				parameters = method.get("Parameters", [])
 				# Process the parameters
 				for parameter in parameters:
-					# Add the optional/required issues in
-					paramType = dict()
-					paramType["name"] = parameter.get("Type", "").lower()
-					parameter["type"] = paramType
-					if("Type" in parameter.keys()):
-						del parameter["Type"]
-					if("optional" in parameter.get("Default Value", "").lower()):
-						del parameter["Default Value"]
-						paramType["optional"] = True
-					if("required" in parameter.get("Default Value", "").lower()):
-						del parameter["Default Value"]
-						paramType["optional"] = False
-					
-					# Adjust the capitalization at a parameter level
-					if("Name" in parameter.keys()):
-						parameter["name"] = parameter.pop("Name")
-					if("Description" in parameter.keys()):
-						parameter["documentation"] = parameter.pop("Description")
-						parameter["documentation"] = re.sub(r'[\t\n\r]', '', parameter["documentation"])
-					if("Type" in parameter.keys()):
-						parameter["type"] = parameter.pop("Type")
-					if(parameter["type"]["name"].lower() in lowerCaseTypes):
-						parameter["type"]["name"] = parameter["type"]["name"].lower()
+					fixParameter(parameter)
+				if "Parameters" in method.keys():
+					method["params"] = method.pop("Parameters")
+				
 				method["release"] = "Private"
 				if("documentation" in method.keys()):
 					method["documentation"] = re.sub(r'[\t\n\r]', '', method["documentation"])
 				
 				# Now set up associated types
 				type = dict()
-				myAggregatedTypes += [type]
-				type["name"] = method["name"] + "Result"
-				type["members"] = []				
+				type["name"] = method["name"] + "Result"			
 				returnInfoNames = ["returnInfo", "Return Value"]
 				for returnInfoName in returnInfoNames:
 					if returnInfoName in method.keys():
 						# Check all the different places the return info could be stored...
 						for member in method[returnInfoName]:
-							myMember = dict()
-							if("Name" in member.keys()):
-								myMember["name"] = member["Name"]
-							if("Type" in member.keys()):
-								myMember["type"] = dict()
-								myMember["type"]["name"] = member["Type"]
-								if(myMember["type"]["name"].lower() in lowerCaseTypes):
-									myMember["type"]["name"] = myMember["type"]["name"].lower()
-							if("Documentation" in member.keys()):
-								myMember["documentation"] = member["Documentation"]
-								myMember["documentation"] = re.sub(r'[\t\n\r]', '', myMember["documentation"])
-
-							type["members"] += [myMember]
-						del method[returnInfoName]
+							fixParameter(member)
+							if(member["type"]["name"] == "HardwareInfo object"):
+								print("CALLED")
+						type["members"] = method.pop(returnInfoName)
+				myAggregatedTypes += [type]
 				method["returnInfo"] = dict()
 				method["returnInfo"]["type"] = type["name"]
-				
-				if "Parameters" in method.keys():
-					method["params"] = method.pop("Parameters")
+
 	
 # Step 4:
 # Comparison of the of the manually maintained dicts vs the generated ones
@@ -203,25 +217,44 @@ for object in aggregatedTypes:
 for object in myAggregatedTypes:
 	objects["automatic"][object["name"]] = object
 
-desiredMethodGroup = ["GetClusterHardwareInfo","GetHardwareConfig","GetNodeHardwareInfo","GetNvramInfo"]
-output= dict()
-output["types"] = []
-output["methods"] = []
-for method in desiredMethodGroup:
-	print(method)
-	# Collect the return object
-	# Also collect any objects that are of a certain type. 
-	output["methods"] += [methods["automatic"][method]]
-	objectName = methods["automatic"][method]["returnInfo"]["type"]
-	output["types"] += [objects["automatic"][objectName]]
+desiredMethodGroup = dict()
+desiredMethodGroup["Hardware"] = ["GetClusterHardwareInfo","GetHardwareConfig","GetNodeHardwareInfo","GetNvramInfo"]
+desiredMethodGroup["VirtualVolume"] = ["GetVirtualVolumeCount","ListVirtualVolumeBindings","ListVirtualVolumeHosts","ListVirtualVolumeTasks","ListVolumeStatsByVirtualVolume"]
+desiredMethodGroup["Features"] = ["EnableFeature","GetFeatureStatus"]
+desiredMethodGroup["StorageContainers"] = ["CreateStorageContainer","GetStorageContainer","DeleteStorageContainer","ListStorageContainers","GetStorageContainerEfficiency"]
+desiredMethodGroup["Initiators"] = ["CreateInitiators","ListInitiators","DeleteInitiators","ModifyInitiators"]
+desiredMethodGroup["Volumes"] = ["DeleteVolumes","ModifyVolumes","PurgeDeletedVolumes","SetDefaultQoS","ModifyVolumeAccessGroup","CreateVolumeAccessGroup","ListVolumeAccessGroups"]
+desiredMethodGroup["Clones"] = ["ListAsyncResults","CancelClone","CancelGroupClone","CopyVolume"]
+desiredMethodGroup["Other"] = ["GetHardwareInfo","ListDriveStats","ListVolumeStats","ListISCSISessions","ListFibreChannelSessions","GetLimits"]
+
+for key in desiredMethodGroup.keys():
+	output= dict()
+	output["types"] = []
+	output["methods"] = []
+	for method in desiredMethodGroup[key]:
+		print(method)
+		# Collect the return object
+		# Also collect any objects that are of a certain type. 
+		if(method not in methods["automatic"]):
+			print(method+" is not documented!! This will not be generated.")
+			continue
+		output["methods"] += [methods["automatic"][method]]
+		objectName = methods["automatic"][method]["returnInfo"]["type"]
+		output["types"] += [objects["automatic"][objectName]]
 	
-with open("Hardware.json", 'w') as f:
-	json.dump(output, f, indent=4)
+	with open("NewJSON/"+key+".json", 'w') as f:
+		json.dump(output, f, indent=4)
 	
 while(1):
 	objectOrMethod = raw_input("Are you looking for an object (o) or a method (m)?")
+	if(objectOrMethod == "e"):
+		break
 	autoOrMan = raw_input("Do you want the json for the automatic generator (a), manual (m), or both (b)?")
+	if(autoOrMan == "e"):
+		break
 	name = raw_input("What is the thing called?")
+	if(name == "e"):
+		break
 	if(objectOrMethod == "o"):
 		if(autoOrMan == "a"):
 			print("AUTOMATIC")
@@ -258,11 +291,11 @@ while(1):
 
 	
 	
-for key in couples["automatic"].keys():
-	if(key in couples["manual"].keys()):
-		print(json.dumps(couples["automatic"][key], indent=4))
-		print(json.dumps(objects["automatic"][couples["automatic"][key]["returnInfo"]["type"]], indent=4))
+for key in methods["automatic"].keys():
+	if(key in methods["manual"].keys()):
+		print(json.dumps(methods["automatic"][key], indent=4))
+		print(json.dumps(objects["automatic"][methods["automatic"][key]["returnInfo"]["type"]], indent=4))
 
-		print(json.dumps(couples["manual"][key], indent=4))
-		print(json.dumps(objects["manual"][couples["manual"][key]["returnInfo"]["type"]], indent=4))
+		print(json.dumps(methods["manual"][key], indent=4))
+		print(json.dumps(objects["manual"][methods["manual"][key]["returnInfo"]["type"]], indent=4))
 		v = raw_input()

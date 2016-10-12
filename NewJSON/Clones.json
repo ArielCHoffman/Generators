@@ -1,0 +1,135 @@
+{
+    "methods": [
+        {
+            "name": "ListAsyncResults", 
+            "returnInfo": {
+                "type": "ListAsyncResultsResult"
+            }, 
+            "documentation": "You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.", 
+            "params": [
+                {
+                    "name": "asyncResultTypes", 
+                    "documentation": "An optional list of types of results. You can use this list to restrict the results to only these types of operations. Possible values:BulkVolume: Copy operations between volumes, such as backups or restores.Clone: Volume cloning operations.DriveRemoval: Operations involving the system copying data from a drive in preparation to remove it from the cluster.RtfiPendingNode: Operations involving the system installing compatible software on a node before adding it to the cluster.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "string"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "CancelClone", 
+            "returnInfo": {
+                "type": "CancelCloneResult"
+            }, 
+            "documentation": "CancelClone enables you to stop an ongoing CloneVolume or CopyVolume process. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle.", 
+            "params": [
+                {
+                    "name": "cloneID", 
+                    "documentation": "The cloneID for the ongoing clone process.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "integer"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "CancelGroupClone", 
+            "returnInfo": {
+                "type": "CancelGroupCloneResult"
+            }, 
+            "documentation": "CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. ", 
+            "params": [
+                {
+                    "name": "groupCloneID", 
+                    "documentation": "cloneID for the ongoing clone process.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "integer"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "CopyVolume", 
+            "returnInfo": {
+                "type": "CopyVolumeResult"
+            }, 
+            "documentation": "CopyVolume enables you to overwrite the contents of one volume with another volume. This method is asynchronous and may take a variable amount of time to complete. You can use the GetAsyncResult method to determine when the process has finished, and ListSyncJobs to see the progress of the copy.Ensure that the destination volume is not written to during this operation. If the destination volume is modified during the copy operation, the changes may be lost, and reads may be inconsistent with the final volume content.The size of the source volume (or snapshot, if provided) must be the same size as the destination volume; the destination volume is not resized to match.NOTE: The initial attributes and quality of service settings for the volume are inherited from the volume being copied. You can change these settings with ModifyVolume.", 
+            "params": [
+                {
+                    "name": "dstVolumeID", 
+                    "documentation": "VolumeID of the volume to overwrite.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "volumeID", 
+                    "documentation": "VolumeID of the volume to be read from.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "snapshotID", 
+                    "documentation": "ID of the snapshot that is used as the source of the clone. If no ID is provided, the current active volume is used.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }
+    ], 
+    "types": [
+        {
+            "name": "ListAsyncResultsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "Attributes"
+                        ]
+                    }, 
+                    "documentation": "An array of serialized asynchronous method results.", 
+                    "name": "asyncHandles"
+                }
+            ]
+        }, 
+        {
+            "name": "CancelCloneResult"
+        }, 
+        {
+            "name": "CancelGroupCloneResult"
+        }, 
+        {
+            "name": "CopyVolumeResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "Handle value used to obtain the operation result.", 
+                    "name": "asyncHandle"
+                }, 
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "CloneID for the newly copied volume.", 
+                    "name": "cloneID"
+                }
+            ]
+        }
+    ]
+}
