@@ -133,7 +133,8 @@ for file in files:
 myAggregatedTypes = []
 myAggregatedMethods = []
 docTypeToJSONTypeMap = {'json object': "Attributes", 'json':"Attributes", "iscsi session object": "ISCSISession", "Cluster Admin Object": "ClusterAdmin", "JSON Obejct":"Attributes",
-	"hardwareinfo object":"hardwareInfo", "hardware object":"hardware"}
+	"hardwareinfo object":"hardwareInfo", "hardware object":"hardware", "long":"uint64", "drive stats objec":"driveStats", "fibre channel sessions object": "fibreChannelSession",
+	"volumestats object":"VolumeStats", "float":"float", "virtual volume binding object object":"bindingVV"}
 lowerCaseTypes = ["integer", "string", "boolean"]
 
 rootdir = "C:\\Projects2016\\API_ElementOS_9.0\\Content\\00_API Reference Guide"

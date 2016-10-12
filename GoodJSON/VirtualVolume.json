@@ -1,0 +1,753 @@
+{
+    "methods": [
+        {
+            "release": "Incubate", 
+            "returnInfo": {
+                "type": "GetVirtualVolumeCountResult"
+            }, 
+            "documentation": "GetVirtualVolumeCount enables you to retrieve the number of virtual volumes currently in the system.", 
+            "name": "GetVirtualVolumeCount"
+        }, 
+        {
+            "name": "ListVirtualVolumeBindings", 
+            "returnInfo": {
+                "type": "ListVirtualVolumeBindingsResult"
+            }, 
+            "documentation": "ListVirtualVolumeBindings returns a list of all virtual volumes in the cluster that are bound to protocol endpoints. ", 
+            "params": [
+                {
+                    "name": "virtualVolumeBindingIDs", 
+                    "documentation": "A list of virtual volume binding IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume bindings.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Incubate"
+        }, 
+        {
+            "name": "ListVirtualVolumeHosts", 
+            "returnInfo": {
+                "type": "ListVirtualVolumeHostsResult"
+            }, 
+            "documentation": "ListVirtualVolumeHosts returns a list of all virtual volume hosts known to the cluster. A virtual volume host is a  ESX\u00ae host that has initiated a session with the VASA API provider.", 
+            "params": [
+                {
+                    "name": "virtualVolumeHostIDs", 
+                    "documentation": "A list of virtual volume host IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume hosts.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Incubate"
+        }, 
+        {
+            "name": "ListVirtualVolumeTasks", 
+            "returnInfo": {
+                "type": "ListVirtualVolumeTasksResult"
+            }, 
+            "documentation": "ListVirtualVolumeTasks returns a list of virtual volume tasks in the system. This method does not remove completed tasks from the system.", 
+            "params": [
+                {
+                    "name": "virtualVolumeTaskIDs", 
+                    "documentation": "A list of virtual volume task IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume tasks.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Incubate"
+        }, 
+        {
+            "name": "ListVolumeStatsByVirtualVolume", 
+            "returnInfo": {
+                "type": "ListVolumeStatsByVirtualVolumeResult"
+            }, 
+            "documentation": "ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.", 
+            "params": [
+                {
+                    "name": "startVirtualVolumeID", 
+                    "documentation": "The ID of the virtual volume at which to begin the list.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "UUID"
+                    }
+                }, 
+                {
+                    "name": "virtualVolumeIDs", 
+                    "documentation": "A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Incubate"
+        }
+    ], 
+    "types": [
+        {
+            "name": "GetVirtualVolumeCountResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "The number of virtual volumes currently in the system.", 
+                    "name": "count"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVirtualVolumeBindingsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "bindingVV"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing all virtual volumes in the cluster that are bound to protocol endpoints. ", 
+                    "name": "bindings"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVirtualVolumeHostsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "hostVV"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing the virtual volume hosts in the cluster.", 
+                    "name": "hosts"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVirtualVolumeTasksResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "taskVV"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing the virtual volume tasks currently in the system.", 
+                    "name": "tasks"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVolumeStatsByVirtualVolumeResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "Attributes"
+                        ]
+                    }, 
+                    "documentation": "A list of objects detailing statistics for each volume associated with a virtual volume.", 
+                    "name": "volumeStats"
+                }
+            ]
+        },
+		{
+			"documentation": "The virtual volume binding object contains  information about a virtual volume's binding. You can retrieve a list of this information for all virtual volumes using the ListVirtualVolumeBindings API method.",
+			"name": "bindingVV",
+			"members": [
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the protocol endpoint.",
+					"name": "protocolEndpointID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The scsiNAADeviceID of the protocol endpoint. For more information, see protocolEndpoint.",
+					"name": "protocolEndpointInBandID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The type of protocol endpoint. SCSI is the only value returned for the protocol endpoint type.",
+					"name": "protocolEndpointType"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the virtual volume binding object.",
+					"name": "virtualVolumeBindingID"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the virtual volume host.",
+					"name": "virtualVolumeHostID"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the virtual volume.",
+					"name": "virtualVolumeID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The secondary ID of the virtual volume.",
+					"name": "virtualVolumeSecondaryID"
+				},
+				{
+					"type": {
+						"name": "virtualVolume"
+					},
+					"documentation": "An object describing the bound volume or snapshot.",
+					"name": "virtualVolume"
+				},
+				{
+					"type": {
+						"name": "protocolEndpoint"
+					},
+					"documentation": "An object describing the protocol endpoint to which the virtual volume is bound.",
+					"name": "protocolEndpoint"
+				},
+				{
+					"type": {
+						"name": "hostVV"
+					},
+					"documentation": "An object describing the host to which this binding corresponds.",
+					"name": "virtualVolumeHost"
+				}
+			]
+		},
+		{
+			"documentation": "The virtual volume host object contains  information about a virtual volume host. You can use theListVirtualVolumeHosts method to retreive this information for all virtual volume hosts.",
+			"name": "hostVV",
+			"members": [
+				{
+					"type": {
+						"name": [
+							"bindingVV"
+						]
+					},
+					"documentation": "A list of objects describing the bindings for the virtual volume host.",
+					"name": "bindings"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the cluster this host is associated with.",
+					"name": "clusterID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The IP address or DNS name of the virtual volume host.",
+					"name": "hostAddress"
+				},
+				{
+					"type": {
+						"name": [
+							"string"
+						]
+					},
+					"documentation": "A list of initiator IQNs for the virtual volume host.",
+					"name": "initiatorNames"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of this virtual volume host.",
+					"name": "virtualVolumeHostID"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "A list of protocol endpoint IDs visible on this host.",
+					"name": "visibleProtocolEndpointIDs"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the virtual volume host.",
+					"name": "hostGuid"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the cluster to which the virtual volume host belongs.",
+					"name": "hostClusterGuid"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "A list of the visible protocol endpoints.",
+					"name": "protocolEndpoints"
+				}
+			]
+		},
+		{
+			"documentation": "The virtual volume task object contains  information about a currently running or finished virtual volume task in the system. You can use the ListVirtualVolumeTasks method to retrieve this information for all virtual volume tasks.",
+			"name": "taskVV",
+			"members": [
+				{
+					"name": "asyncHandle",
+					"documentation": "The asyncHandle associated with the task.",
+					"type": {
+						"name": "integer"
+					}
+				},
+				{
+					"documentation":"Indicates whether or not the task was cancelled. Possible values:truefalse",
+					"type": {
+						"name": "boolean"
+					},
+					"name": "cancelled"
+				},
+				{
+					"documentation": "The unique virtual volume ID of the virtual volume being cloned (for clone tasks).",
+					"type": {
+						"name": "UUID"
+					},
+					"name": "cloneVirtualVolumeID"
+				},
+				{
+					"documentation": "An object containing metadata of the parent for tasks which clone or take snapshots of a virtual volume.",
+					"type": {
+						"name": "Attributes"
+					},
+					"name": "parentMetadata"
+				},
+				{
+					"documentation": "The total space available (in bytes) on the parent for clone or snapshot tasks.",
+					"type": {
+						"name": "integer"
+					},
+					"name": "parentTotalSize"
+				},
+				{
+					"documentation": "The used space of the parent (in bytes) for clone or snapshot tasks",
+					"type": {
+						"name": "integer"
+					},
+					"name": "parentUsedSize"
+				},
+				{
+					"documentation": "The type of operation the task is performing. Possible values:unknown: The task operation is unknown.prepare: The task is preparing a virtual volume.snapshot: The task is creating a snapshot of a virtual volume.rollback: The task is rolling back a virtual volume to a snapshot.clone: The task is creatinga clone of the virtual volume.fastClone: The task is creating a fast clone of a virtual volume.copyDiffs: The task is copying differing blocks to a virtual volume.",
+					"type": {
+						"name": "string"
+					},
+					"name": "operation"
+				},
+				{
+					"documentation": "The current status of the virtual volume task:Error: The task has failed and returned an error.Queued: The task is waiting to be run.Running: The task is currently running.Success: Thetask has completed successfully.",
+					"type": {
+						"name": "string"
+					},
+					"name": "status"
+				},
+				{
+					"documentation": "The unique ID of the host that started the task.",
+					"type": {
+						"name": "UUID"
+					},
+					"name": "virtualVolumeHostID"
+				},
+				{
+					"documentation": "The new, unique virtual volume ID (for tasks that create a new virtual volume).",
+					"type": {
+						"name": "UUID"
+					},
+					"name": "virtualVolumeID"
+				},
+				{
+					"documentation": "The unique ID of the task.",
+					"type": {
+						"name": "UUID"
+					},
+					"name": "virtualVolumeTaskID"
+				}
+			]
+		},
+		{
+			"documentation": "The virtualVolume object contains configuration information about a virtual volume as well as information about snapshots of the virtual volume. It does not include runtime or usage information. You can use the ListVirtualVolumes method to retrieve some or all of the Virtual Volume objects for the cluster.\n",
+			"name": "virtualVolume",
+			"members": [
+				{
+					"type": {
+						"name": [
+							"integer"
+						]
+					},
+					"documentation": "A list of binding IDs for this virtual volume.",
+					"name": "bindings"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "A list of virtual volume UUIDs that are children of this virtual volume.",
+					"name": "children"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "When \"recursive=true\" is passed to the ListVirtualVolumes method, contains a list of virtual volume UUIDs that are descendants of this virtual volume.",
+					"name": "descendants"
+				},
+				{
+					"type": {
+						"name": "Attributes"
+					},
+					"documentation": "Key / value pairs of the virtual volume\u2019s metadata, such as virtual volume type, guest OS type, and so on.",
+					"name": "metadata"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The virtualVolumeID of the parent virtual volume.     If the ID is all zeros, this is an independent virtual volume with no link to a parent.",
+					"name": "parentVirtualVolumeID"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The ID of the underlying  snapshot. '0' value if the virtual volume does not represent asnapshot. ",
+					"name": "snapshotID"
+				},
+				{
+					"type": {
+						"name": "snapshot"
+					},
+					"documentation": "The snapshot object for the associated snapshot (null if nonixestent).",
+					"name": "snapshotInfo"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Current status of the virtual volume:cloning: The virtual volume is being processed in response to a clone or snapshot operation.waiting: The virtual volume is waiting for a snapshot operation to complete.ready: The virtual volume is ready for general purpose use.",
+					"name": "status"
+				},
+				{
+					"type": {
+						"name": "storageContainer"
+					},
+					"documentation": "An object describing the storage container that owns this virtual volume.",
+					"name": "storageContainer"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the virtual volume.",
+					"name": "virtualVolumeID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The type of the virtual volume.",
+					"name": "virtualVolumeType"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The ID of the underlying volume.",
+					"name": "volumeID"
+				},
+				{
+					"type": {
+						"name": "volume"
+					},
+					"documentation": "When \"details=true\" is passed to the ListVirtualVolumes method, this member is an object describing the volume.",
+					"name": "volumeInfo"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The size, in bytes, of the addressable space of the virtual volume.",
+					"name": "volumeLogicalSize"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The size, in bytes, of the actual space occupied by the virtual volume.",
+					"name": "volumeCommittedSize"
+				}
+			]
+		},
+		{
+		    "documentation": "The snapshot object contains information about a snapshot made for a  volume.You can use the ListSnapshots API method to retrieve a list of snapshot information for a volume or for all volumes. The response includes information about the active snapshot as well as each snapshot created for a volume.",
+				"name": "snapshot",
+				"members": [
+					{
+						"type": {
+							"name": "Attributes"
+						},
+						"name": "attributes"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "A small string representation of the data in the stored snapshot. This checksum can be used later to compare other snapshots to detect errors in the data. ",
+						"name": "checksum"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "UTC+0 formatted time the snapshot was created.               ",
+						"name": "createTime"
+					},
+					{
+						"type": {
+							"name": "boolean"
+						},
+						"documentation": "Identifies if snapshot is enabled for remote replication.",
+						"name": "enableRemoteReplication"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "Indicates how the snapshot expiration was set. Possible values:Api: The expiration time was set by using the API. None: There is no expiration time set.Test: The expiration time was set for testing.",
+						"name": "expirationReason"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "The time at which this snapshot will expire and be purged from the cluster.",
+						"name": "expirationTime"
+					},
+					{
+						"type": {
+							"name": "integer"
+						},
+						"documentation": "Group ID if the snapshot is a member of a group snapshot.",
+						"name": "groupID"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "The current \u201cmembers\u201d results contains information about each snapshot in the group.Each of these members will have a \u201cuuid\u201d parameter for the snapshot\u2019s UUID.",
+						"name": "groupsnapshotUUID"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "Unique name assigned to the snapshot. If no name was specified, the name is the UTC+0 formatted time stamp of when the snapshot was created.",
+						"name": "name"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "Current remote status of the snapshot.Possible values: Present: The snapshot exists on a remote cluster.NotPresent: The snapshot does not exist on remote cluster.Syncing: This is a target cluster and it is currently replicating the snapshot.Deleted: This is a target cluster, the snapshot has been deleted, and it still exists onthe source. ",
+						"name": "remoteStatus"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "Unique ID of an existing snapshot.",
+						"name": "snapshotID"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "Universal Unique ID of an existing snapshot.",
+						"name": "snapshotUUID"
+					},
+					{
+						"type": {
+							"name": "string"
+						},
+						"documentation": "Current status of the snapshot:unknown: There was an error obtaining the status of the snapshot.preparing: This snapshot is being prepared for use and is not yet writable.remoteSyncing: This snapshot is being replicated from a remote cluster.done: This snapshot has finished preparation or replication and is now usable.active: This snapshot is the active branch.cloning: This snapshot is involved in a CopyVolume operation.",
+						"name": "status"
+					},
+					{
+						"type": {
+							"name": "integer"
+						},
+						"documentation": "Total bytes of the snapshot.",
+						"name": "totalSize"
+					},
+					{
+						"type": {
+							"name": "UUID"
+						},
+						"documentation": "The ID of the virtual volume associated with this snapshot.",
+						"name": "virtualVolumeID"
+					},
+					{
+						"type": {
+							"name": "VolumeID"
+						},
+						"documentation": "The Volume ID the snapshot was created from.",
+						"name": "volumeID"
+					}
+				]
+			}
+		},
+		{
+			"documentation": "The protocolEndpoint object contains the attributes of a protocol endpoint. You can retrieve this information for all protocol endpoints in the cluster using the API method ListProtocolEndpoints. ",
+			"name": "protocolEndpoint",
+			"members": [
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The ID of the primary protocol endpoint provider object for the protocol endpoint.",
+					"name": "primaryProviderID"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the protocol endpoint.",
+					"name": "protocolEndpointID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The status of the protocol endpoint. Possible values:Active: The protocol endpoint is in use.Start: The protocol endpoint is starting.Failover: The protocol endpoint has failed over.Reserved: The protocol endpoint is reserved.",
+					"name": "protocolEndpointState"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The type of the protocol endpoint's provider. Possible values:PrimarySecondary",
+					"name": "providerType"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The globally unique SCSI device identifier for the protocol endpoint in NAA IEEE Registered Extended Format. ",
+					"name": "scsiNAADeviceID"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The ID of the secondary protocol endpoint provider object for the protocol endpoint.",
+					"name": "secondaryProviderID"
+				}
+			]
+		},
+		{
+			"documentation": "The storageContainer object contains the attributes of a virtual volume storage container. You can retrieve this information for  each storage container in the cluster using the API method ListStorageContainers. ",
+			"name": "storageContainer",
+			"members": [
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The ID of the account associated with the storage container.",
+					"name": "accountID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The CHAP authentication secret for the initiator associated with the storage container. ",
+					"name": "initiatorSecret"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The name of the storage container.",
+					"name": "name"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The storage container's protocol endpoint type. SCSIis the only value returned for the protocol endpoint type.",
+					"name": "protocolEndpointType"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The status of the storage container. Possible values:Active: The storage container is in use.Locked: The storage container is locked.",
+					"name": "status"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique ID of the storage container.",
+					"name": "storageContainerID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The CHAP authentication secret for the target associated with the storage container.",
+					"name": "targetSecret"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "A list of the virtual volumes associated with the storage container.",
+					"name": "virtualVolumes"
+				}
+			]
+		}
+    ]
+}

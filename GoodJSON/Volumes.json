@@ -1,0 +1,766 @@
+{
+    "methods": [
+        {
+            "name": "DeleteVolumes", 
+            "returnInfo": {
+                "type": "DeleteVolumesResult"
+            }, 
+            "documentation": "DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.", 
+            "params": [
+                {
+                    "name": "accountIDs", 
+                    "documentation": "A list of account IDs. All volumes from these accounts are deleted from the system. ", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "volumeAccessGroupIDs", 
+                    "documentation": "A list of volume access group IDs. All of the volumes from all of the volume access groups you specify in this list are deleted from the system.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "volumeIDs", 
+                    "documentation": "The list of IDs of the volumes to delete from the system.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ModifyVolumes", 
+            "returnInfo": {
+                "type": "ModifyVolumesResult"
+            }, 
+            "documentation": "ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the \"Replication Target\" volume.Increase the size of the source or \"Read / Write\" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.", 
+            "params": [
+                {
+                    "name": "volumeIDs", 
+                    "documentation": "A list of volumeIDs for the volumes to be modified.", 
+                    "type": {
+                        "optional": false, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "accountID", 
+                    "documentation": "AccountID to which the volume is reassigned. If none is specified, the previous account name is used.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "access", 
+                    "documentation": "Access allowed for the volume. Possible values:readOnly: Only read operations are allowed.readWrite: Reads and writes are allowed.locked: No reads or writes are allowed.If not specified, the access value does not change.replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.If a value is not specified, the access value does not change. ", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "attributes", 
+                    "type": {
+                        "optional": true, 
+                        "name": "Attributes"
+                    }
+                }, 
+                {
+                    "name": "mode", 
+                    "documentation": "Volume replication mode. Possible values:asynch: Waits for system to acknowledge that data is stored on source before writing to the target.sync: Does not wait for data transmission acknowledgment from source to begin writing data to the target.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "qos", 
+                    "documentation": "New quality of service settings for this volume.If not specified, the QoS settings are not changed.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "qualityOfService"
+                    }
+                }, 
+                {
+                    "name": "setCreateTime", 
+                    "documentation": "Identify the time at which the volume was created.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "totalSize", 
+                    "documentation": "New size of the volume in bytes. 1000000000 is equal to 1GB. Size is rounded up to the nearest 1MB in size. This parameter can only be used to increase the size of a volume.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "PurgeDeletedVolumes", 
+            "returnInfo": {
+                "type": "PurgeDeletedVolumesResult"
+            }, 
+            "documentation": "PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.", 
+            "params": [
+                {
+                    "name": "volumeIDs", 
+                    "documentation": "A list of volumeIDs of volumes to be purged from the system.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "accountIDs", 
+                    "documentation": "A list of accountIDs. All of the volumes from all of the specified accounts are purged from the system.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "volumeAccessGroupIDs", 
+                    "documentation": "A list of volumeAccessGroupIDs. All of the volumes from all of the specified Volume Access Groups are purged from the system.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "SetDefaultQoS", 
+            "returnInfo": {
+                "type": "SetDefaultQoSResult"
+            }, 
+            "documentation": "SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . ", 
+            "params": [
+                {
+                    "name": "minIOPS", 
+                    "documentation": "The minimum number of sustained IOPS that are provided by the cluster to a volume.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "maxIOPS", 
+                    "documentation": "The maximum number of sustained IOPS that are provided by the cluster to a volume.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "burstIOPS", 
+                    "documentation": "The maximum number of IOPS allowed in a short burst scenario.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ModifyVolumeAccessGroup", 
+            "returnInfo": {
+                "type": "ModifyVolumeAccessGroupResult"
+            }, 
+            "documentation": "You can use ModifyVolumeAccessGroup to update initiators and add or remove volumes from a volume access group. If a  specified initiator or volume is a duplicate of what currently exists,  the volume access group is left as-is. If you don't specify a value for volumes or initiators, the current list of initiators and volumes is not changed. You can also associate a virtual network with a volume access group. This association applies to all volumes in the volume access group.See the following methods to add or remove initiators or add or remove volumes:AddInitiatorsToVolumeAccessGroupRemoveInitiatorsFromVolumeAccessGroupAddVolumesToVolumeAccessGroupRemoveVolumesFromVolumeAccessGroup", 
+            "params": [
+                {
+                    "name": "volumeAccessGroupID", 
+                    "documentation": "The ID of the volume access group to modify.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "virtualNetworkID", 
+                    "documentation": "The ID of the  Virtual Network ID to associate the volume access group with.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "virtualNetworkTags", 
+                    "documentation": "The ID of the VLAN Virtual Network Tag to associate the volume access group with.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "name", 
+                    "documentation": "The new name for this volume access group. ", 
+                    "type": {
+                        "optional": true, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "Default Value": "{} (no attributes)", 
+                    "name": "attributes", 
+                    "type": {
+                        "name": "Attributes"
+                    }
+                }, 
+                {
+                    "name": "initiators", 
+                    "documentation": "List of initiator IDs or names (IQNs and WWPNs) to include in the volume access group. If you pass a list of initiator names, the initiators are created if they do not already exist.If you pass a list of initiator IDs, the method returns an error if any of the initiators does not already exist.Passing initiator names is deprecated;  recommends using initiator IDs whenever possible.", 
+                    "Default Value": "[] - leave empty to not modify the list of initiators", 
+                    "type": {
+                        "name": [
+                            "string"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "initiators", 
+                    "documentation": "List of IQN / WWPN initiators.", 
+                    "Default Value": "[] - leave empty to not modify the list of initiators", 
+                    "type": {
+                        "name": [
+                            "string"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "deleteOrphanInitiators", 
+                    "documentation": "true: Delete initiator objects after they are removed from a volume access group.false: Do not delete initiator objects after they are removed from a volume access group.", 
+                    "Default Value": "True", 
+                    "type": {
+                        "name": "boolean"
+                    }
+                }, 
+                {
+                    "name": "volumes", 
+                    "documentation": "List of volumes to modify.", 
+                    "Default Value": "[ ] - leave empty to not modify the list of volumes", 
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "CreateVolumeAccessGroup", 
+            "returnInfo": {
+                "type": "CreateVolumeAccessGroupResult"
+            }, 
+            "documentation": "You can use CreateVolumeAccessGroup to create a new volume access group. When you create the volume access group, you need to give it a name, and you can optionally enter initiators and volumes. Once you create the group, you can add volumes and initiator IQNs. Any initiator IQN that you add to the volume access group is able to access any volume in the group without CHAP authentication. Note the following volume access group limits:A volume access group can contain up to 64 initiator IQNs.An initiator can only belong to one volume access group.A volume access group can contain up to 2000 volumes.Each volume access group can belong to a maximum of four other volume access groups.", 
+            "params": [
+                {
+                    "name": "name", 
+                    "documentation": "Name of the volume access group. Not required to be unique, but recommended. May be 1 to 64 characters in length.", 
+                    "type": {
+                        "optional": false, 
+                        "name": "string"
+                    }
+                }, 
+                {
+                    "name": "initiators", 
+                    "documentation": "List of initiator IDs or names (IQNs and WWPNs) to include in the volume access group. If you pass a list of initiator names, the initiators are created if they do not already exist.If you pass a list of initiator IDs, the method returns an error if any of the initiators does not already exist.Passing initiator names is deprecated;  recommends using initiator IDs whenever possible.", 
+                    "Default Value": "[]", 
+                    "type": {
+                        "name": [
+                            "string"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "initiators", 
+                    "documentation": "List of initiator names (IQNs and WWPNs) toinclude in the volume access group.", 
+                    "Default Value": "[]", 
+                    "type": {
+                        "name": [
+                            "string"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "volumes", 
+                    "documentation": "List of VolumeIDs to include in the volume access group.", 
+                    "Default Value": "[]", 
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "virtualNetworkIDs", 
+                    "documentation": "List of virtual network IDs to associate with the volume access group.", 
+                    "Default Value": "[]", 
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "name": "virtualNetworkTag", 
+                    "documentation": "List of virtual network tags to associate with the volume access group.", 
+                    "Default Value": "[]", 
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }, 
+                {
+                    "Default Value": "{}", 
+                    "name": "attributes", 
+                    "type": {
+                        "name": "Attributes"
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
+            "name": "ListVolumeAccessGroups", 
+            "returnInfo": {
+                "type": "ListVolumeAccessGroupsResult"
+            }, 
+            "documentation": "ListVolumeAccessGroups enables you to return information about the volume access groups that are currently in the system. ", 
+            "params": [
+                {
+                    "name": "startVolumeAccessGroupID", 
+                    "documentation": "The volume access group ID at which to begin the listing. Mutually exclusive with the \"volumeAccessGroups\" parameter.", 
+                    "Default Value": "0", 
+                    "type": {
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "limit", 
+                    "documentation": "Maximum number of Volume Access Group objects to return. Mutually exclusive with the \"volumeAccessGroups\" parameter.", 
+                    "Default Value": "Unlimited", 
+                    "type": {
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "volumeAccessGroups", 
+                    "documentation": "List of volumeAccessGroupID values to retrieve. Mutually exclusive with the \"startVolumeAccessGroupID\" and \"limit\" parameters.", 
+                    "Default Value": "[]", 
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }
+    ], 
+    "types": [
+        {
+            "name": "DeleteVolumesResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "volume"
+                    }, 
+                    "documentation": "Information about the newly deleted volume.", 
+                    "name": "volumes"
+                }
+            ]
+        }, 
+        {
+            "name": "ModifyVolumesResult", 
+            "members": [
+            ]
+        }, 
+        {
+            "name": "PurgeDeletedVolumesResult"
+        }, 
+        {
+            "name": "SetDefaultQoSResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "The minimum number of sustained IOPS that are provided by the cluster to a volume. ", 
+                    "name": "minIOPS"
+                }, 
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "The maximum number of sustained IOPS that are provided by the cluster to a volume.", 
+                    "name": "maxIOPS"
+                }, 
+                {
+                    "type": {
+                        "name": "integer"
+                    }, 
+                    "documentation": "The maximum number of IOPS allowed in a short burst scenario.", 
+                    "name": "burstIOPS"
+                }
+            ]
+        }, 
+        {
+            "name": "ModifyVolumeAccessGroupResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "volumeAccessGroup"
+                    }, 
+                    "documentation": "An object containing information about the newly modified volume access group.", 
+                    "name": "volumeAccessGroup"
+                }
+            ]
+        }, 
+        {
+            "name": "CreateVolumeAccessGroupResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "Attributes"
+                    }, 
+                    "name": "volumeAccessGroup"
+                }
+            ]
+        }, 
+        {
+            "name": "ListVolumeAccessGroupsResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": [
+                            "volumeAccessGroupInfo"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing each volume access group.", 
+                    "name": "volumeAccessGroups"
+                }, 
+                {
+                    "type": {
+                        "name": [
+                            "integer"
+                        ]
+                    }, 
+                    "documentation": "A list of volume access groups not found by the system. Present if you used the \"volumeAccessGroups\" parameter and the system was unable to find one or more volume access groups that you specified.", 
+                    "name": "volumeAccessGroupsNotFound"
+                }
+            ]
+        },
+		{
+			"documentation": "Quality of Service (QoS) values are used on  volumes to provision performance expectations. Minimum, maximum and burst QoS values can be set within the ranges specified in the following QoS table. Volumes created without specified QoS values are created with the following default values. Default values can be found by running the GetDefaultQoS method.",
+			"name": "qualityOfService",
+			"members": [
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Maximum \"peak\" 4KB IOPS allowed for short periods of time. Allows for bursts of I/O activity over the normal maxIOPS value.",
+					"name": "burstIOPS"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The length of time burstIOPS is allowed. The value returned is represented in time units of seconds. NOTE: this value is calculated by the system based on IOPS set for QoS.",
+					"name": "burstTime"
+				},
+				{
+					"type": {
+						"name": "Attributes"
+					},
+					"documentation": "The curve is a set of key-value pairs. The keys are I/O sizes in bytes. The values represent the cost performing an IOP at a specific I/O size. The curve is calculated relative to a 4096 byte operation set at 100 IOPS.",
+					"name": "curve"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Desired maximum 4KB IOPS allowed over an extended period of time.",
+					"name": "maxIOPS"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Desired minimum 4KB IOPS to guarantee. The allowed IOPS will only drop below this level if all volumes have been capped at their minIOPS value and there is still insufficient performance capacity.",
+					"name": "minIOPS"
+				}
+			]
+		},
+		{
+			"documentation": "The volume object contains configuration information about unpaired or paired volumes. It does not include runtime or usage information, and does not contain information about virtual volumes.You can use the following methods to retrieve some or all of the volumes objects:\nListVolumesListActiveVolumesListDeletedVolumesListVolumesForAccountListActivePairedVolumes",
+			"name": "volume",
+			"members": [
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Access allowed for the volume:readOnly: Only read operations are allowed.readWrite: Reads and writes are allowed.locked: No reads or writes are allowed. replicationTarget:Designated as a target volume in a replicated volume pair.",
+					"name": "access"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "The accountID of the account containing the volume. ",
+					"name": "accountID"
+				},
+				{
+					"type": {
+						"name": "Attributes"
+					},
+					"name": "attributes"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Size of the blocks on the volume.",
+					"name": "blockSize"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "UTC+0 formatted time the volume was created.                     ",
+					"name": "createTime"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "UTC+0 formatted time the volume was deleted.                    ",
+					"name": "deleteTime"
+				},
+				{
+					"type": {
+						"name": "boolean"
+					},
+					"documentation": "If \"true\", the volume provides 512 byte sector emulation.",
+					"name": "enable512e"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Volume iSCSI Qualified Name.",
+					"name": "iqn"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Name of the volume as provided at creation time.",
+					"name": "name"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "UTC+0 formatted time the volume was purged from the system.                    ",
+					"name": "purgeTime"
+				},
+				{
+					"type": {
+						"name": "qualityOfService"
+					},
+					"documentation": "Quality of service settings for this volume.",
+					"name": "qos"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.",
+					"name": "scsiEUIDeviceID"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.",
+					"name": "scsiNAADeviceID"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Number of slices on the volume. Will always be \"1\".",
+					"name": "sliceCount"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Current status of the volume:init: A volume that is being initialized and is not readyfor connections.active: An active volume ready for connections.deleted: A volume thathas been marked for deletion, but not yet purged.",
+					"name": "status"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total bytes of provisioned capacity.",
+					"name": "totalSize"
+				},
+				{
+					"type": {
+						"name": "UUID"
+					},
+					"documentation": "The unique virtual volume ID associated with the volume, if any.",
+					"name": "virtualVolumeID"
+				},
+				{
+					"type": {
+						"name": [
+							"VolumeAccessGroupIDs. Returns [ ] if a volume does not belong to any volume access groups"
+						]
+					},
+					"documentation": "List of volume access groups to which a volume belongs.",
+					"name": "volumeAccessGroups"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Unique VolumeID for the volume.",
+					"name": "volumeID"
+				},
+				{
+					"type": {
+						"name": [
+							"volume pair information. Returns [ ] if the volume is not paired"
+						]
+					},
+					"documentation": "Information about a paired volume. Available only if a volume is paired. See the volumePair object for return values.",
+					"name": "volumePairs"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "The type of volume:block: This volume is a block volume.vvol: This volume is a virtual volume.",
+					"name": "volumeType"
+				}
+			]
+		},
+		{
+			"documentation": "The volumeAccessGroup object contains information about a specific volume access group. You can retrieve a list of this information for all access groups with the API method ListVolumeAccessGroups.",
+			"name": "volumeAccessGroup",
+			"members": [
+				{
+					"type": {
+						"name": "Attributes"
+					},
+					"name": "attributes"
+				},
+				{
+					"type": {
+						"name": [
+							"integer"
+						]
+					},
+					"documentation": "Array of volumes that have been deleted from the volume access group that have not yet been purged from the system.",
+					"name": "deletedVolumes"
+				},
+				{
+					"type": {
+						"name": [
+							"integer"
+						]
+					},
+					"documentation": "A list of IDs of initiators that are mapped to the volume access group.",
+					"name": "initiatorIDs"
+				},
+				{
+					"type": {
+						"name": [
+							"string"
+						]
+					},
+					"documentation": "Array of unique IQN / WWPN initiators that are mapped to the volume access group.",
+					"name": "initiators"
+				},
+				{
+					"type": {
+						"name": "string"
+					},
+					"documentation": "Name of the volume access group.",
+					"name": "name"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Unique VolumeAccessGroupID identifier for the volume access group.",
+					"name": "volumeAccessGroupID"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "The ID of the  Virtual Network ID that are associated with the volume access group.",
+					"name": "virtualNetworkIDs"
+				},
+				{
+					"type": {
+						"name": [
+							"UUID"
+						]
+					},
+					"documentation": "The ID of the VLAN Virtual Network Tag that are associated with the volume access group.",
+					"name": " virtualNetworkTags"
+				},
+				{
+					"type": {
+						"name": [
+							"VolumeID"
+						]
+					},
+					"documentation": "A list of VolumeIDs belonging to the volume access group.",
+					"name": "volumes"
+				}
+			]
+		}
+    ]
+}

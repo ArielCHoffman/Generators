@@ -1,0 +1,63 @@
+{
+  "hardwareConfig": {
+	  "biosRevision": "1.0",
+	  "biosVendor": "SolidFire",
+	  "biosVersion": "1.1.2",
+	  "blockDriveSizeBytes": 300069052416,
+	  "blockDrives": [
+		  "/dev/slot0",
+		  "/dev/slot1",
+		  "/dev/slot2",
+		  "/dev/slot3",
+		  "/dev/slot4",
+		  "/dev/slot5",
+		  "/dev/slot6",
+		  "/dev/slot7",
+		  "/dev/slot8",
+		  "/dev/slot9"
+	  ],
+	  "bmcFirmwareRevision": "1.6",
+	  "bmcIpmiVersion": "2.0",
+	  "chassisType": "R620",
+	  "cpuCores": 6,
+	  "cpuCoresEnabled": 6,
+	  "cpuModel": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+	  "cpuThreads": 12,
+	  "driveSizeBytesInternal": 400088457216,
+	  "fibreChannelFirmwareRevision": "",
+	  "fibreChannelModel": "",
+	  "idracVersion": "1.06.06",
+	  "kernelCrashDump": {
+		  "kernelCrashDumpDefaultState": "enabled",
+		  "kernelCrashDumpDirectory": "/var/crash",
+		  "kernelCrashDumpKernelOptions": "ro console=tty10 console=ttyS1,115200n8 quiet splash vt.handoff=7 irqpoll maxcpus=1 reset_devices nousb modprobe.blacklist=qla2xxx,bnx2x",
+		  "kernelCrashDumpMakedumpfileLevel": 31,
+		  "kernelCrashDumpMinFreeGb": 5
+	  },
+	  "lifecycleVersion": "1.0.0.5747",
+	  "memoryGB": 72,
+	  "memoryMhz": 1333,
+	  "networkDriver": "^bnx2x$",
+	  "nodeType": "SF3010",
+	  "numCpu": 2,
+	  "numDrives": 10,
+	  "numDrivesInternal": 1,
+	  "rootDrive": "/dev/sdimm0",
+	  "scsiBusExternalDriver": "mpt2sas",
+	  "scsiBusInternalDriver": "ahci",
+	  "sliceDriveSizeBytes": 299988156416,
+	  "sliceDrives": [
+		  "/dev/sdimm0p4"
+	  ],
+	  "slotOffset": 0,
+	  "solidfireDefaults": {
+		  "bufferCacheGB": 16,
+		  "configuredIops": 50000,
+		  "cpuDmaLatency": -1,
+		  "maxIncomingSliceSyncs": 10,
+		  "postCallbackThreadCount": 8,
+		  "sCacheFileCapacity": 100000000,
+		  "sliceFileLogFileCapacity": 5000000000
+	  }
+  }
+}

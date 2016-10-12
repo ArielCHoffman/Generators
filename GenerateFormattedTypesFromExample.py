@@ -36,7 +36,7 @@ def getTypes(object, objectName):
 	types += [thisType]
 	return types
 
-with open("ExampleObject.json", 'r' ) as f:
+with open("responseExamples/hardware.json", 'r' ) as f:
 	data = f.read()
 
 object = json.loads(data)

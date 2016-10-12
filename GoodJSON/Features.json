@@ -16,7 +16,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
             "name": "GetFeatureStatus", 
@@ -34,7 +34,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }
     ], 
     "types": [

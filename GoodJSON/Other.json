@@ -9,13 +9,13 @@
             "params": [
                 {
                     "type": {
-                        "name": "Boolean "
+                        "name": "boolean"
                     }, 
                     "documentation": "Set the \"force\" parameter to true to run on all nodes in the cluster.", 
                     "name": "force"
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
             "name": "ListDriveStats", 
@@ -35,7 +35,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
             "name": "ListVolumeStats", 
@@ -55,10 +55,10 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
-            "release": "Private", 
+            "release": "Incubate", 
             "returnInfo": {
                 "type": "ListISCSISessionsResult"
             }, 
@@ -66,7 +66,7 @@
             "name": "ListISCSISessions"
         }, 
         {
-            "release": "Private", 
+            "release": "Incubate", 
             "returnInfo": {
                 "type": "ListFibreChannelSessionsResult"
             }, 
@@ -74,7 +74,7 @@
             "name": "ListFibreChannelSessions"
         }, 
         {
-            "release": "Private", 
+            "release": "Incubate", 
             "returnInfo": {
                 "type": "GetLimitsResult"
             }, 
@@ -160,6 +160,206 @@
         }, 
         {
             "name": "GetLimitsResult"
-        }
+        },
+		{
+			"documentation": "The driveStats object contains high-level activity measurements for a single drive. You can retrieve measurement information with the API method GetDriveStats. ",
+			"name": "driveStats",
+			"members": [
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Number of iSCSI sessions presently using this drive (only present for metadata drives).",
+
+					"name": "activeSessions"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Unique ID of the drive in the cluster.",
+					"name": "driveID"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Number of failed drive hardware elements.",
+					"name": "failedDieCount"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Drive Media wear out indicator.",
+					"name": "lifeRemainingPercent"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total bytes read from this drive for the lifetime of the drive.",
+					"name": "lifetimeReadBytes"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total bytes written to this drive for the lifetime of the drive.",
+					"name": "lifetimeWriteBytes"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Number of hours this drive has been powered on.",
+					"name": "powerOnHours"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total bytes read from the drive due to client operations.",
+					"name": "readBytes"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total read operations on the drive due to client operations.",
+					"name": "readOps"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Number of bad sectors replaced in this drive.",
+					"name": "reallocatedSectors"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Drive available reserves.",
+					"name": "reserveCapacityPercent"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"name": "timestamp"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total capacity of the drive, in bytes.",
+					"name": "totalCapacity"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Used capacity of the drive, in bytes.",
+					"name": "usedCapacity"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Amount of memory currently used by the node hosting this drive.",
+					"name": "usedMemory"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total bytes written to the drive due to client activity.",
+					"name": "writeBytes"
+				},
+				{
+					"type": {
+						"name": "integer"
+					},
+					"documentation": "Total write operations to the drive due to client activity.",
+					"name": "writeOps"
+				},
+				{
+					"documentation": "The session object contains information about each  session that is visible to the cluster and what target ports it is visible on. You can retrieve this information with the API method ListFibreChannelSessions. ",
+					"name": "fibreChannelSession",
+					"members": [
+						{
+							"type": {
+								"name": "string"
+							},
+							"documentation": "The WWPN of the initiator which is logged into the target port.",
+							"name": "initiatorWWPN"
+						},
+						{
+							"type": {
+								"name": "integer"
+							},
+							"documentation": "The node that owns the  session.",
+							"name": "nodeID"
+						},
+						{
+							"type": {
+								"name": "Attributes"
+							},
+							"documentation": "Information about this  session's server initiator:alias: The friendly name assigned to the initiator.attributes: The attributes of this initiator.initiatorID: The ID of this initiator.initiatorName: The name of this initiator.volumeAccessGroups: A list of volume access groups associated with this initiator.",
+							"name": "initiator"
+						},
+						{
+							"type": {
+								"name": "integer"
+							},
+							"documentation": "The service ID of the FService that owns this  session.",
+							"name": "serviceID"
+						},
+						{
+							"type": {
+								"name": "string"
+							},
+							"documentation": "The WWPN of the target port involved in this session.",
+							"name": "targetWWPN"
+						},
+						{
+							"type": {
+								"name": "integer"
+							},
+							"documentation": "The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, this value is null.",
+							"name": "volumeAccessGroupID"
+						}
+					]
+				},
+				{
+					"documentation": "The volumeStats object contains statistical data for an individual volume.The following methods return volumeStats objects for some or all volumes:GetVolumeStatsListVolumeStatsByAccountListVolumeStatsByVolumeListVolumeStatsByVolumeAccessGroup",
+					"name": "VolumeStats",
+					"members": [
+						{
+							"type": {
+								"name": "integer"
+							},
+							"documentation": "AccountID of the volume owner.",
+							"name": "accountID"
+						},
+						{
+							"type": {
+								"name": "integer"
+							},
+							"documentation": "Current actual IOPS to the volume in the last 500 milliseconds.",
+							"name": "actualIOPS"
+						},
+						{
+							"documentation": "The length of time since the volume was last synced with the remote cluster. If the volume is not paired, this is null.",
+							"type": {
+								"name": "string?"
+							},
+							"name": "asyncDelay"
+						}
+					]
+				}
+			]
+		}
     ]
 }

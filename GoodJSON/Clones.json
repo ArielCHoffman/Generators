@@ -18,7 +18,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
             "name": "CancelClone", 
@@ -36,7 +36,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
             "name": "CancelGroupClone", 
@@ -54,7 +54,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }, 
         {
             "name": "CopyVolume", 
@@ -88,7 +88,7 @@
                     }
                 }
             ], 
-            "release": "Private"
+            "release": "Incubate"
         }
     ], 
     "types": [
