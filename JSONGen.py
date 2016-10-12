@@ -95,6 +95,9 @@ for file in files:
 # Read through the files and make a method/object
 myAggregatedTypes = []
 myAggregatedMethods = []
+docTypeToJSONTypeMap = {'json objects': "Attribute"}
+lowerCaseTypes = ["integer", "string", "boolean"]
+
 rootdir = "C:\\Projects2016\\API_ElementOS_9.0\\Content\\00_API Reference Guide"
 for root, subFolders, files in os.walk(rootdir):
 	for folder in subFolders:
@@ -118,19 +121,17 @@ for root, subFolders, files in os.walk(rootdir):
 				method = copy.deepcopy(parser.method)
 				parser.method = dict()
 				myAggregatedMethods += [method]
-
 				parser.reset()
 				
 				# Step 3.5:
 				# Postprocess the methods so that they include necessary info
-				lowerCaseTypes = ["integer", "string", "boolean"]
 				
 				parameters = method.get("Parameters", [])
 				# Process the parameters
 				for parameter in parameters:
 					# Add the optional/required issues in
 					paramType = dict()
-					paramType["name"] = parameter.get("Type", "")
+					paramType["name"] = parameter.get("Type", "").lower()
 					parameter["type"] = paramType
 					if("Type" in parameter.keys()):
 						del parameter["Type"]
