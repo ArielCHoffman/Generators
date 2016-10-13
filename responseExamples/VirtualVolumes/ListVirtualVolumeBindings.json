@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "result": {
+    "bindings": [
+      {
+        "protocolEndpointID": "5dd53da0-b9b7-43f9-9b7e-b41c2558e92b",
+        "protocolEndpointInBandID": "naa.6f47acc2000000016a67746700000000",
+        "protocolEndpointType": "SCSI",
+        "virtualVolumeBindingID": 177,
+        "virtualVolumeHostID": "564de1a4-9a99-da0f-8b7c-3a41dfd64bf1",
+        "virtualVolumeID": "269d3378-1ca6-4175-a18f-6d4839e5c746",
+        "virtualVolumeSecondaryID": "0xe200000000a6"
+      }
+    ]
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "id": null,
+  "result": {
+    "nvramInfo": {
+      "details": {
+        "errors": {
+          "numOfErrorLogEntries": "0"
+        },
+        "extended": {
+          "dialogVersion": "4",
+          "event": [
+            {
+              "name": "flushToFlash",
+              "time": "2016-07-28 17:43:56",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "2016-07-28 17:59:28",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "1948-07-10 14:45:43",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "2016-07-28 18:37:02",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "1948-07-10 15:23:17",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "2016-07-28 20:28:01",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "2016-08-10 20:11:31",
+              "value": "0"
+            },
+            {
+              "name": "flushToFlash",
+              "time": "2016-08-10 20:31:47",
+              "value": "0"
+            },
+            {
+              "name": "excessiveCurrent",
+              "time": "2014-07-31 21:12:08",
+              "value": "244"
+            }
+          ],
+          "eventOccurrences": [
+            {
+              "count": "143",
+              "name": "flushToFlash"
+            },
+            {
+              "count": "1",
+              "name": "excessiveCurrent"
+            }
+          ],
+          "initialCapacitance": "7.126 F",
+          "initialEsr": "0.097 Ohm",
+          "measurement": [
+            {
+              "level_0": " 0",
+              "level_1": " 387",
+              "level_2": " 4235656",
+              "level_3": " 156318",
+              "level_4": " 18423212",
+              "level_5": " 11903",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "enterpriseFlashControllerTemperature",
+              "recent": "72 C"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 428",
+              "level_2": " 318053",
+              "level_3": " 4069249",
+              "level_4": " 17460703",
+              "level_5": " 973002",
+              "level_6": " 1977",
+              "level_7": " 3919",
+              "level_8": " 145",
+              "level_9": " 0",
+              "name": "capacitor1And2Temperature",
+              "recent": "36.67 C"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 582",
+              "level_2": " 4137227",
+              "level_3": " 15410629",
+              "level_4": " 3267522",
+              "level_5": " 6589",
+              "level_6": " 1051",
+              "level_7": " 3876",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "capacitor3And4Temperature",
+              "recent": "33.15 C"
+            },
+            {
+              "errorPeriod": [
+                {
+                  "duration": "18",
+                  "startTime": "2015-08-05 21:08:44",
+                  "worst": "8"
+                },
+                {
+                  "duration": "60",
+                  "startTime": "2015-08-05 21:09:08",
+                  "worst": "8"
+                },
+                {
+                  "duration": "1238",
+                  "startTime": "2015-08-05 21:10:21",
+                  "worst": "8"
+                },
+                {
+                  "duration": "48",
+                  "startTime": "2015-08-05 21:31:29",
+                  "worst": "8"
+                }
+              ],
+              "level_0": " 0",
+              "level_1": " 517",
+              "level_2": " 23121",
+              "level_3": " 949227",
+              "level_4": " 3418492",
+              "level_5": " 111906",
+              "level_6": " 16026683",
+              "level_7": " 2297078",
+              "level_8": " 452",
+              "level_9": " 0",
+              "name": "rearVentAmbientTemperature",
+              "recent": "52.71 C"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 4260284",
+              "level_2": " 16816925",
+              "level_3": " 1750179",
+              "level_4": " 88",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "rms200BoardTemperature",
+              "recent": "57.75 C"
+            },
+            {
+              "name": "voltageOfCapacitor1",
+              "recent": "2.254 V"
+            },
+            {
+              "name": "voltageOfCapacitor2",
+              "recent": "2.262 V"
+            },
+            {
+              "name": "voltageOfCapacitor3",
+              "recent": "2.226 V"
+            },
+            {
+              "name": "voltageOfCapacitor4",
+              "recent": "2.207 V"
+            },
+            {
+              "level_0": " 4650290",
+              "level_1": " 16740344",
+              "level_2": " 1048777",
+              "level_3": " 123763",
+              "level_4": " 93659",
+              "level_5": " 80709",
+              "level_6": " 62446",
+              "level_7": " 27488",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "capacitorPackVoltage",
+              "recent": "8.949 V"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 0",
+              "level_2": " 0",
+              "level_3": " 19",
+              "level_4": " 38",
+              "level_5": " 18",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 2",
+              "level_9": " 66",
+              "name": "capacitorPackVoltageAtEndOfFlushToFlash",
+              "recent": "4.470 V"
+            },
+            {
+              "name": "currentDerivedFromV3V4",
+              "recent": "0.002 A"
+            },
+            {
+              "level_0": " 8",
+              "level_1": " 6",
+              "level_2": " 4",
+              "level_3": " 106",
+              "level_4": " 17",
+              "level_5": " 2",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "derivedEnergy",
+              "recent": "190 Joules"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 0",
+              "level_2": " 0",
+              "level_3": " 0",
+              "level_4": " 0",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 18",
+              "level_9": " 230",
+              "name": "derivedCapacitanceOfThePack",
+              "recent": "7.322 F"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 248",
+              "level_2": " 0",
+              "level_3": " 0",
+              "level_4": " 0",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "derivedEsrOfCapacitorPack",
+              "recent": "0.096 Ohm"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 0",
+              "level_2": " 0",
+              "level_3": " 0",
+              "level_4": " 124",
+              "level_5": " 19",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "timeToRunFlushToFlash",
+              "recent": "22.39 Seconds"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 0",
+              "level_2": " 77",
+              "level_3": " 0",
+              "level_4": " 0",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "timeToRunRestore",
+              "recent": "20.49 Seconds"
+            },
+            {
+              "level_0": " 0",
+              "level_1": " 54",
+              "level_2": " 17",
+              "level_3": " 6",
+              "level_4": " 0",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 1",
+              "name": "timeToChargeCapacitors",
+              "recent": "42 Seconds"
+            },
+            {
+              "level_0": " 4945370",
+              "level_1": " 22054",
+              "level_2": " 0",
+              "level_3": " 0",
+              "level_4": " 0",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "correctableBitsInErrorOnReadingAPage"
+            },
+            {
+              "level_0": " 22054",
+              "level_1": " 0",
+              "level_2": " 0",
+              "level_3": " 0",
+              "level_4": " 0",
+              "level_5": " 0",
+              "level_6": " 0",
+              "level_7": " 0",
+              "level_8": " 0",
+              "level_9": " 0",
+              "name": "correctableBitsInErrorOnReadingTheWorstBchRegionOfAPage"
+            },
+            {
+              "errorPeriod": [
+                {
+                  "duration": "9",
+                  "startTime": "2015-11-26 16:29:51",
+                  "worst": "8"
+                },
+                {
+                  "duration": "6",
+                  "startTime": "2015-11-26 16:30:06",
+                  "worst": "8"
+                },
+                {
+                  "duration": "15",
+                  "startTime": "2015-11-26 16:30:36",
+                  "worst": "8"
+                }
+              ],
+              "level_0": " 0",
+              "level_1": " 3924463",
+              "level_2": " 337357",
+              "level_3": " 5942",
+              "level_4": " 451546",
+              "level_5": " 17237764",
+              "level_6": " 865372",
+              "level_7": " 5022",
+              "level_8": " 10",
+              "level_9": " 0",
+              "name": "fanInletAmbientTemperature",
+              "recent": "46.47 C"
+            }
+          ],
+          "smartCounters": [
+            {
+              "name": "numberOf512ByteBlocksReadFromDdr",
+              "value": "141895819"
+            },
+            {
+              "name": "numberOf512ByteBlocksWrittenToDdr",
+              "value": "89867121104"
+            },
+            {
+              "name": "numberOfHostReadCommands",
+              "value": "9326735"
+            },
+            {
+              "name": "numberOfHostWriteCommands",
+              "value": "12090520050"
+            },
+            {
+              "name": "controllerBusyTimeMinutes",
+              "value": "37318"
+            },
+            {
+              "name": "numberOfPowerCycles",
+              "value": "133"
+            },
+            {
+              "name": "powerOnHours",
+              "value": "18611"
+            },
+            {
+              "name": "unsafeShutdowns",
+              "value": "56"
+            },
+            {
+              "name": "mediaErrors",
+              "value": "0"
+            },
+            {
+              "name": "numberOfErrorLogs",
+              "value": "13"
+            }
+          ],
+          "snapshotTime": "2016-10-13 16:32:13"
+        },
+        "firmware": {
+          "activeSlotNumber": "2",
+          "slot1Version": "1e5817bc",
+          "slot2Version": "5fb7565c",
+          "slot3Version": "1e5817bc",
+          "slot4Version": "1e5817bc"
+        },
+        "identify": {
+          "firmwareVersion": "5fb7565c on slot 2",
+          "hardwareRevision": "B04",
+          "modelNumber": "RMS-200",
+          "serialNumber": "0000866"
+        },
+        "smart": {
+          "availableSpace": "0%",
+          "availableSpaceThreshold": "0%",
+          "controllerBusyTimeMinutes": "37318",
+          "criticalErrorVector": "0x0",
+          "mediaErrors": "0",
+          "numberOf512ByteBlocksRead": "141895819",
+          "numberOf512ByteBlocksWritten": "89867121104",
+          "numberOfErrorInfoLogs": "13",
+          "numberOfHostReadCommands": "9326735",
+          "numberOfHostWriteCommands": "12090520050",
+          "numberOfPowerCycles": "133",
+          "powerOnHours": "18611",
+          "temperature": "330 Kelvin",
+          "unsafeShutdowns": "56"
+        }
+      },
+      "status": "Warning",
+      "statusInfo": {
+        "warning": [
+          "excessiveCurrent (1x)"
+        ]
+      },
+      "type": "RMS-200"
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import json
+import os
+import glob
 
 # It will only come to this if we are definitely not dealing with a dictionary
 def convertType(object, key, types):
@@ -36,10 +38,68 @@ def getTypes(object, objectName):
 	types += [thisType]
 	return types
 
-with open("responseExamples/hardware.json", 'r' ) as f:
-	data = f.read()
+def makeAssert(result, assertList, keyPath):
+	if(type(result) is unicode):
+		return assertList + ["Assert.IsTrue(result"+keyPath+" == \""+result+"\", \"Died on "+keyPath+"\");\n\t\t\t"]
+	if(type(result) is dict):
+		val = []
+		for key in result.keys():
+			val = val + makeAssert(result[key], assertList, keyPath+"."+key[0].upper()+key[1:])
+		return val + assertList
+	if(type(result) is list):
+		val = []
+		for i in range(0,len(result)):
+			val = makeAssert(result[i], assertList, keyPath+"["+str(i)+"]") + val
+		return val + assertList
+	if(result is None):
+		return assertList
+	return assertList
 
-object = json.loads(data)
-types = getTypes(object, "ExampleName")
+	
+for root, subFolders, files in os.walk("responseExamples"):
+	for folder in subFolders:
+		unitTestOutput = open(folder+".cs", 'w');
+		subFolderPath = os.path.join(root, folder)
+		files = glob.glob(subFolderPath+"\*")
+		fileHeader = """using Moq;
+using System.Linq;
+using SolidFire.SDK.Adaptor;
+using System;
 
-print(json.dumps(types, indent=4))
+namespace Element.Tests
+{
+    [TestClass]
+    public class """+folder+"Tests"+"""
+    {"""
+		unitTestOutput.write(fileHeader)
+		for file in files:
+			fileName = file.split("\\")[-1]
+			methodHeader = """
+        [TestMethod]
+        public void Test"""+fileName.split('.')[0]+"""()
+        {
+            var mock = new Mock<IRpcRequestDispatcher>();
+            mock.Setup(m => m.Dispatch(It.IsAny<string>(), It.IsAny<CancellationToken>())).ReturnsAsync(Properties.Resources.RESP_"""+fileName.split('.')[0]+"""_v9);
+            SolidFireElement sfe = new SolidFireElement(mock.Object);
+
+            // Act
+            GetHardwareConfigResult result = sfe."""+fileName.split('.')[0]+"""();
+			"""
+			unitTestOutput.write(methodHeader)
+			with open( file, 'r' ) as f:
+				data = f.read()
+			object = json.loads(data)
+			#types = getTypes(object, "ExampleName")
+			#print(json.dumps(types, indent=4))
+
+			asserts = makeAssert(object["result"], [], "")
+			for a in asserts:
+				unitTestOutput.write(a)
+			methodCloser = """
+        }"""
+			unitTestOutput.write(methodCloser)
+		fileCloser = """"
+    }
+}
+"""
+		unitTestOutput.write(fileCloser)

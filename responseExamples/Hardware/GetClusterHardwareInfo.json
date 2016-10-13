@@ -1,0 +1,1361 @@
+{
+  "id": null,
+  "result": {
+    "clusterHardwareInfo": {
+      "drives": {
+        "1": {
+          "description": "ATA      Drive",
+          "dev": "8:0",
+          "devpath": "/dev/sdimm0p4",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": true,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sda",
+          "product": "VRFSD3400GBCTMMAS1",
+          "scsiCompatID": "scsi-SATA_VRFSD3400GBCTMM203529284-part4",
+          "securityFeatureEnabled": false,
+          "securityFeatureSupported": true,
+          "serial": "203529284",
+          "size": 299988156416,
+          "uuid": "f0b19a4b-c9a2-2e58-335f-cceb20c306cd",
+          "version": "365A13F0"
+        },
+        "2": {
+          "description": "ATA      Drive",
+          "dev": "8:16",
+          "devpath": "/dev/slot0",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdb",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR14620193300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR14620193300EGN",
+          "size": 300069052416,
+          "uuid": "b198c917-5ffe-ae63-0940-8765f786ed64",
+          "version": "4PC10362"
+        },
+        "3": {
+          "description": "ATA      Drive",
+          "dev": "8:112",
+          "devpath": "/dev/slot1",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdh",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR1461053H300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR1461053H300EGN",
+          "size": 300069052416,
+          "uuid": "355b7f51-e861-97f3-48f5-0b9bb4bb86b6",
+          "version": "4PC10362"
+        },
+        "4": {
+          "description": "ATA      Drive",
+          "dev": "8:144",
+          "devpath": "/dev/slot2",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdj",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR146101TT300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR146101TT300EGN",
+          "size": 300069052416,
+          "uuid": "b62dbadf-e62e-894e-37df-ac9dce6594ff",
+          "version": "4PC10362"
+        },
+        "5": {
+          "description": "ATA      Drive",
+          "dev": "8:96",
+          "devpath": "/dev/slot3",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdg",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR14620AP5300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR14620AP5300EGN",
+          "size": 300069052416,
+          "uuid": "c5d7a7ee-7cdf-494a-76e3-72f2284023d4",
+          "version": "4PC10362"
+        },
+        "6": {
+          "description": "ATA      Drive",
+          "dev": "8:128",
+          "devpath": "/dev/slot4",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdi",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR142108T5300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR142108T5300EGN",
+          "size": 300069052416,
+          "uuid": "545dd40d-8344-dda5-2e3d-c2ad4005283b",
+          "version": "4PC10362"
+        },
+        "7": {
+          "description": "ATA      Drive",
+          "dev": "8:160",
+          "devpath": "/dev/slot5",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdk",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR146401ZY300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR146401ZY300EGN",
+          "size": 300069052416,
+          "uuid": "47175675-a5e0-267b-4288-015ca5e9ef1b",
+          "version": "4PC10362"
+        },
+        "8": {
+          "description": "ATA      Drive",
+          "dev": "8:32",
+          "devpath": "/dev/slot6",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdc",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR146007NL300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR146007NL300EGN",
+          "size": 300069052416,
+          "uuid": "7524866c-4a31-1a4a-7aad-32b4cf83d176",
+          "version": "4PC10362"
+        },
+        "9": {
+          "description": "ATA      Drive",
+          "dev": "8:64",
+          "devpath": "/dev/slot7",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sde",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR146007NE300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR146007NE300EGN",
+          "size": 300069052416,
+          "uuid": "e498c538-5798-22e7-5933-48e1e0ef9960",
+          "version": "4PC10362"
+        },
+        "10": {
+          "description": "ATA      Drive",
+          "dev": "8:80",
+          "devpath": "/dev/slot8",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdf",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR146104SF300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR146104SF300EGN",
+          "size": 300069052416,
+          "uuid": "9cc657ad-b162-6a56-b3ae-2d5c4f85bf1e",
+          "version": "4PC10362"
+        },
+        "11": {
+          "description": "ATA      Drive",
+          "dev": "8:48",
+          "devpath": "/dev/slot9",
+          "driveSecurityAtMaximum": false,
+          "driveSecurityFrozen": false,
+          "driveSecurityLocked": false,
+          "logicalname": "/dev/sdd",
+          "product": "INTEL SSDSA2CW300G3",
+          "scsiCompatID": "scsi-SATA_INTEL_SSDSA2CW3CVPR1462045W300EGN",
+          "securityFeatureEnabled": true,
+          "securityFeatureSupported": true,
+          "serial": "CVPR1462045W300EGN",
+          "size": 300069052416,
+          "uuid": "caa5012e-c5ce-f2c7-a02c-0f0e6e986c3a",
+          "version": "4PC10362"
+        }
+      },
+      "nodes": {
+        "1": {
+          "bus": {
+            "core_DMI:0200": {
+              "description": "Motherboard",
+              "physid": "0",
+              "product": "0H47HH",
+              "serial": "..CN7475122J0059.",
+              "vendor": "SolidFire",
+              "version": "A00"
+            }
+          },
+          "driveHardware": [
+            {
+              "canonicalName": "sda",
+              "connected": true,
+              "dev": 2052,
+              "devPath": "/dev/sdimm0p4",
+              "driveType": "Slice",
+              "lifeRemainingPercent": 100,
+              "lifetimeReadBytes": 1471026298880,
+              "lifetimeWriteBytes": 657129996288,
+              "name": "scsi-SATA_VRFSD3400GBCTMM203529284-part4",
+              "path": "/dev/sda4",
+              "pathLink": "/dev/sdimm0p4",
+              "powerOnHours": 21889,
+              "product": "VRFSD3400GBCTMMAS1",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_VRFSD3400GBCTMM203529284-part4",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": true,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "203529284",
+              "size": 299988156416,
+              "slot": -1,
+              "uuid": "f0b19a4b-c9a2-2e58-335f-cceb20c306cd",
+              "vendor": "Viking",
+              "version": "365A13F0"
+            },
+            {
+              "canonicalName": "sdb",
+              "connected": true,
+              "dev": 2064,
+              "devPath": "/dev/slot0",
+              "driveType": "Block",
+              "lifeRemainingPercent": 67,
+              "lifetimeReadBytes": 21367697178624,
+              "lifetimeWriteBytes": 28688770924544,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR14620193300EGN",
+              "path": "/dev/sdb",
+              "pathLink": "/dev/slot0",
+              "powerOnHours": 37461,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR14620193300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR14620193300EGN",
+              "size": 300069052416,
+              "slot": 0,
+              "uuid": "b198c917-5ffe-ae63-0940-8765f786ed64",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdh",
+              "connected": true,
+              "dev": 2160,
+              "devPath": "/dev/slot1",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21356489998336,
+              "lifetimeWriteBytes": 28929087766528,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR1461053H300EGN",
+              "path": "/dev/sdh",
+              "pathLink": "/dev/slot1",
+              "powerOnHours": 37345,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR1461053H300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR1461053H300EGN",
+              "size": 300069052416,
+              "slot": 1,
+              "uuid": "355b7f51-e861-97f3-48f5-0b9bb4bb86b6",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdj",
+              "connected": true,
+              "dev": 2192,
+              "devPath": "/dev/slot2",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21170531336192,
+              "lifetimeWriteBytes": 28565223505920,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR146101TT300EGN",
+              "path": "/dev/sdj",
+              "pathLink": "/dev/slot2",
+              "powerOnHours": 37457,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR146101TT300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR146101TT300EGN",
+              "size": 300069052416,
+              "slot": 2,
+              "uuid": "b62dbadf-e62e-894e-37df-ac9dce6594ff",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdg",
+              "connected": true,
+              "dev": 2144,
+              "devPath": "/dev/slot3",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21286562562048,
+              "lifetimeWriteBytes": 28216995610624,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR14620AP5300EGN",
+              "path": "/dev/sdg",
+              "pathLink": "/dev/slot3",
+              "powerOnHours": 37344,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR14620AP5300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR14620AP5300EGN",
+              "size": 300069052416,
+              "slot": 3,
+              "uuid": "c5d7a7ee-7cdf-494a-76e3-72f2284023d4",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdi",
+              "connected": true,
+              "dev": 2176,
+              "devPath": "/dev/slot4",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 16556394283008,
+              "lifetimeWriteBytes": 24971912937472,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR142108T5300EGN",
+              "path": "/dev/sdi",
+              "pathLink": "/dev/slot4",
+              "powerOnHours": 37495,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR142108T5300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR142108T5300EGN",
+              "size": 300069052416,
+              "slot": 4,
+              "uuid": "545dd40d-8344-dda5-2e3d-c2ad4005283b",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdk",
+              "connected": true,
+              "dev": 2208,
+              "devPath": "/dev/slot5",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21341323395072,
+              "lifetimeWriteBytes": 28911270363136,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR146401ZY300EGN",
+              "path": "/dev/sdk",
+              "pathLink": "/dev/slot5",
+              "powerOnHours": 37458,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR146401ZY300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR146401ZY300EGN",
+              "size": 300069052416,
+              "slot": 5,
+              "uuid": "47175675-a5e0-267b-4288-015ca5e9ef1b",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdc",
+              "connected": true,
+              "dev": 2080,
+              "devPath": "/dev/slot6",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21032555511808,
+              "lifetimeWriteBytes": 28401511432192,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR146007NL300EGN",
+              "path": "/dev/sdc",
+              "pathLink": "/dev/slot6",
+              "powerOnHours": 37261,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR146007NL300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR146007NL300EGN",
+              "size": 300069052416,
+              "slot": 6,
+              "uuid": "7524866c-4a31-1a4a-7aad-32b4cf83d176",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sde",
+              "connected": true,
+              "dev": 2112,
+              "devPath": "/dev/slot7",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21204454866944,
+              "lifetimeWriteBytes": 28637466198016,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR146007NE300EGN",
+              "path": "/dev/sde",
+              "pathLink": "/dev/slot7",
+              "powerOnHours": 37460,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR146007NE300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR146007NE300EGN",
+              "size": 300069052416,
+              "slot": 7,
+              "uuid": "e498c538-5798-22e7-5933-48e1e0ef9960",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdf",
+              "connected": true,
+              "dev": 2128,
+              "devPath": "/dev/slot8",
+              "driveType": "Block",
+              "lifeRemainingPercent": 100,
+              "lifetimeReadBytes": 201326592,
+              "lifetimeWriteBytes": 167772160,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR146104SF300EGN",
+              "path": "/dev/sdf",
+              "pathLink": "/dev/slot8",
+              "powerOnHours": 1843,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR146104SF300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR146104SF300EGN",
+              "size": 300069052416,
+              "slot": 8,
+              "uuid": "9cc657ad-b162-6a56-b3ae-2d5c4f85bf1e",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            },
+            {
+              "canonicalName": "sdd",
+              "connected": true,
+              "dev": 2096,
+              "devPath": "/dev/slot9",
+              "driveType": "Block",
+              "lifeRemainingPercent": 68,
+              "lifetimeReadBytes": 21338504822784,
+              "lifetimeWriteBytes": 28405235974144,
+              "name": "scsi-SATA_INTEL_SSDSA2CW3CVPR1462045W300EGN",
+              "path": "/dev/sdd",
+              "pathLink": "/dev/slot9",
+              "powerOnHours": 37464,
+              "product": "INTEL SSDSA2CW300G3",
+              "reallocatedSectors": 0,
+              "reserveCapacityPercent": 100,
+              "scsiCompatId": "scsi-SATA_INTEL_SSDSA2CW3CVPR1462045W300EGN",
+              "scsiState": "Running",
+              "securityAtMaximum": false,
+              "securityEnabled": false,
+              "securityFrozen": false,
+              "securityLocked": false,
+              "securitySupported": true,
+              "serial": "CVPR1462045W300EGN",
+              "size": 300069052416,
+              "slot": 9,
+              "uuid": "caa5012e-c5ce-f2c7-a02c-0f0e6e986c3a",
+              "vendor": "Intel",
+              "version": "4PC10362"
+            }
+          ],
+          "fibreChannelPorts": [],
+          "fileSystemUsage": {},
+          "hardwareConfig": {
+            "BIOS_REVISION": {
+              "Passed": true,
+              "actual": "1.1",
+              "comparator": ">=",
+              "expected": "1.0.0.0"
+            },
+            "BIOS_VENDOR": {
+              "Passed": true,
+              "actual": "SolidFire",
+              "comparator": "==",
+              "expected": "SolidFire"
+            },
+            "BIOS_VERSION": {
+              "Passed": true,
+              "actual": "1.1.2",
+              "comparator": ">=",
+              "expected": "1.1.2"
+            },
+            "CPU_CORES_00": {
+              "Passed": true,
+              "actual": "6",
+              "comparator": "==",
+              "expected": "6"
+            },
+            "CPU_CORES_01": {
+              "Passed": true,
+              "actual": "6",
+              "comparator": "==",
+              "expected": "6"
+            },
+            "CPU_CORES_ENABLED_00": {
+              "Passed": true,
+              "actual": "6",
+              "comparator": "==",
+              "expected": "6"
+            },
+            "CPU_CORES_ENABLED_01": {
+              "Passed": true,
+              "actual": "6",
+              "comparator": "==",
+              "expected": "6"
+            },
+            "CPU_MODEL_00": {
+              "Passed": true,
+              "actual": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+              "comparator": "==",
+              "expected": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz"
+            },
+            "CPU_MODEL_01": {
+              "Passed": true,
+              "actual": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+              "comparator": "==",
+              "expected": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz"
+            },
+            "CPU_THREADS_00": {
+              "Passed": true,
+              "actual": "12",
+              "comparator": "==",
+              "expected": "12"
+            },
+            "CPU_THREADS_01": {
+              "Passed": true,
+              "actual": "12",
+              "comparator": "==",
+              "expected": "12"
+            },
+            "CPU_THREADS_ENABLED": {
+              "Passed": true,
+              "actual": "24",
+              "comparator": "==",
+              "expected": "24"
+            },
+            "IDRAC_VERSION": {
+              "Passed": true,
+              "actual": "1.06.06",
+              "comparator": ">=",
+              "expected": "1.06.06"
+            },
+            "LIFECYCLE_VERSION": {
+              "Passed": true,
+              "actual": "1.0.0.5747",
+              "comparator": ">=",
+              "expected": "1.0.0.5747"
+            },
+            "MEMORY_GB": {
+              "Passed": true,
+              "actual": "72",
+              "comparator": ">=",
+              "expected": "72"
+            },
+            "MEMORY_MHZ_00": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_01": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_02": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_03": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_04": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_05": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_06": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_07": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_08": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_09": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_10": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MEMORY_MHZ_11": {
+              "Passed": true,
+              "actual": "1333",
+              "comparator": ">=",
+              "expected": "1333"
+            },
+            "MPTSAS_BIOS_VERSION": {
+              "Passed": true,
+              "actual": "07.25.00.00",
+              "comparator": "==",
+              "expected": "7.25.0.0"
+            },
+            "MPTSAS_FIRMWARE_VERSION": {
+              "Passed": true,
+              "actual": "13.00.57.00",
+              "comparator": "==",
+              "expected": "13.0.57.0"
+            },
+            "NETWORK_DRIVER_ETH0": {
+              "Passed": true,
+              "actual": "bnx2x",
+              "comparator": "==",
+              "expected": "bnx2x"
+            },
+            "NETWORK_DRIVER_ETH1": {
+              "Passed": true,
+              "actual": "bnx2x",
+              "comparator": "==",
+              "expected": "bnx2x"
+            },
+            "NETWORK_DRIVER_ETH2": {
+              "Passed": true,
+              "actual": "bnx2x",
+              "comparator": "==",
+              "expected": "bnx2x"
+            },
+            "NETWORK_DRIVER_ETH3": {
+              "Passed": true,
+              "actual": "bnx2x",
+              "comparator": "==",
+              "expected": "bnx2x"
+            },
+            "NETWORK_FIRMWARE_VERSION_ETH0": {
+              "Passed": true,
+              "actual": "7.10.18-solidfire-386560b9d0e3.",
+              "comparator": "==",
+              "expected": "7.10.18-solidfire-386560b9d0e3."
+            },
+            "NETWORK_FIRMWARE_VERSION_ETH1": {
+              "Passed": true,
+              "actual": "7.10.18-solidfire-386560b9d0e3.",
+              "comparator": "==",
+              "expected": "7.10.18-solidfire-386560b9d0e3."
+            },
+            "NETWORK_FIRMWARE_VERSION_ETH2": {
+              "Passed": true,
+              "actual": "7.10.18-solidfire-386560b9d0e3.",
+              "comparator": "==",
+              "expected": "7.10.18-solidfire-386560b9d0e3."
+            },
+            "NETWORK_FIRMWARE_VERSION_ETH3": {
+              "Passed": true,
+              "actual": "7.10.18-solidfire-386560b9d0e3.",
+              "comparator": "==",
+              "expected": "7.10.18-solidfire-386560b9d0e3."
+            },
+            "NUM_CPU": {
+              "Passed": true,
+              "actual": "2",
+              "comparator": "==",
+              "expected": "2"
+            }
+          },
+          "kernelCrashDumpState": "EnabledByDefault",
+          "memory": {
+            "firmware_": {
+              "capacity": "8323072",
+              "date": "03/08/2012",
+              "description": "BIOS",
+              "physid": "0",
+              "size": "65536",
+              "vendor": "SolidFire",
+              "version": "1.1.2"
+            },
+            "memory_DMI:1000": {
+              "description": "System Memory",
+              "physid": "1000",
+              "size": "77309411328",
+              "slot": "System board or motherboard"
+            }
+          },
+          "network": {
+            "network:0_": {
+              "description": "Ethernet interface",
+              "logicalname": "Bond1G",
+              "physid": "1",
+              "serial": "d4:ae:52:7a:bb:b1"
+            },
+            "network:0_PCI:0000:01:00.0": {
+              "businfo": "pci@0000:01:00.0",
+              "capacity": "1000000000",
+              "clock": "33000000",
+              "description": "Ethernet interface",
+              "logicalname": "eth0",
+              "physid": "0",
+              "product": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
+              "serial": "d4:ae:52:7a:bb:ad",
+              "vendor": "Broadcom Corporation",
+              "version": "10",
+              "width": "64"
+            },
+            "network:1_": {
+              "description": "Ethernet interface",
+              "logicalname": "Bond10G",
+              "physid": "2",
+              "serial": "d4:ae:52:7a:bb:ad"
+            },
+            "network:1_PCI:0000:01:00.1": {
+              "businfo": "pci@0000:01:00.1",
+              "capacity": "1000000000",
+              "clock": "33000000",
+              "description": "Ethernet interface",
+              "logicalname": "eth1",
+              "physid": "0.1",
+              "product": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
+              "serial": "d4:ae:52:7a:bb:ad",
+              "vendor": "Broadcom Corporation",
+              "version": "10",
+              "width": "64"
+            },
+            "network:2_PCI:0000:01:00.2": {
+              "businfo": "pci@0000:01:00.2",
+              "capacity": "1000000000",
+              "clock": "33000000",
+              "description": "Ethernet interface",
+              "logicalname": "eth2",
+              "physid": "0.2",
+              "product": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
+              "serial": "d4:ae:52:7a:bb:b1",
+              "size": "1000000000",
+              "vendor": "Broadcom Corporation",
+              "version": "10",
+              "width": "64"
+            },
+            "network:3_PCI:0000:01:00.3": {
+              "businfo": "pci@0000:01:00.3",
+              "capacity": "1000000000",
+              "clock": "33000000",
+              "description": "Ethernet interface",
+              "logicalname": "eth3",
+              "physid": "0.3",
+              "product": "NetXtreme II BCM57800 1/10 Gigabit Ethernet",
+              "serial": "d4:ae:52:7a:bb:b1",
+              "size": "1000000000",
+              "vendor": "Broadcom Corporation",
+              "version": "10",
+              "width": "64"
+            }
+          },
+          "networkInterfaces": {
+            "Bond10G": {
+              "isConfigured": true,
+              "isUp": true
+            },
+            "Bond1G": {
+              "isConfigured": true,
+              "isUp": true
+            },
+            "eth0": {
+              "isConfigured": true,
+              "isUp": true
+            },
+            "eth1": {
+              "isConfigured": true,
+              "isUp": true
+            },
+            "eth2": {
+              "isConfigured": true,
+              "isUp": true
+            },
+            "eth3": {
+              "isConfigured": true,
+              "isUp": true
+            }
+          },
+          "nvram": {
+            "errors": {
+              "numOfErrorLogEntries": "0"
+            },
+            "extended": {
+              "dialogVersion": "4",
+              "event": [
+                {
+                  "name": "flushToFlash",
+                  "time": "2016-07-28 17:43:56",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "2016-07-28 17:59:28",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "1948-07-10 14:45:43",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "2016-07-28 18:37:02",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "1948-07-10 15:23:17",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "2016-07-28 20:28:01",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "2016-08-10 20:11:31",
+                  "value": "0"
+                },
+                {
+                  "name": "flushToFlash",
+                  "time": "2016-08-10 20:31:47",
+                  "value": "0"
+                },
+                {
+                  "name": "excessiveCurrent",
+                  "time": "2014-07-31 21:12:08",
+                  "value": "244"
+                }
+              ],
+              "eventOccurrences": [
+                {
+                  "count": "143",
+                  "name": "flushToFlash"
+                },
+                {
+                  "count": "1",
+                  "name": "excessiveCurrent"
+                }
+              ],
+              "initialCapacitance": "7.126 F",
+              "initialEsr": "0.097 Ohm",
+              "measurement": [
+                {
+                  "level_0": " 0",
+                  "level_1": " 387",
+                  "level_2": " 4235656",
+                  "level_3": " 156318",
+                  "level_4": " 18423236",
+                  "level_5": " 11903",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "enterpriseFlashControllerTemperature",
+                  "recent": "72 C"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 428",
+                  "level_2": " 318053",
+                  "level_3": " 4069249",
+                  "level_4": " 17460727",
+                  "level_5": " 973002",
+                  "level_6": " 1977",
+                  "level_7": " 3919",
+                  "level_8": " 145",
+                  "level_9": " 0",
+                  "name": "capacitor1And2Temperature",
+                  "recent": "36.71 C"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 582",
+                  "level_2": " 4137227",
+                  "level_3": " 15410653",
+                  "level_4": " 3267522",
+                  "level_5": " 6589",
+                  "level_6": " 1051",
+                  "level_7": " 3876",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "capacitor3And4Temperature",
+                  "recent": "33.17 C"
+                },
+                {
+                  "errorPeriod": [
+                    {
+                      "duration": "18",
+                      "startTime": "2015-08-05 21:08:44",
+                      "worst": "8"
+                    },
+                    {
+                      "duration": "60",
+                      "startTime": "2015-08-05 21:09:08",
+                      "worst": "8"
+                    },
+                    {
+                      "duration": "1238",
+                      "startTime": "2015-08-05 21:10:21",
+                      "worst": "8"
+                    },
+                    {
+                      "duration": "48",
+                      "startTime": "2015-08-05 21:31:29",
+                      "worst": "8"
+                    }
+                  ],
+                  "level_0": " 0",
+                  "level_1": " 517",
+                  "level_2": " 23121",
+                  "level_3": " 949227",
+                  "level_4": " 3418492",
+                  "level_5": " 111906",
+                  "level_6": " 16026707",
+                  "level_7": " 2297078",
+                  "level_8": " 452",
+                  "level_9": " 0",
+                  "name": "rearVentAmbientTemperature",
+                  "recent": "52.76 C"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 4260284",
+                  "level_2": " 16816949",
+                  "level_3": " 1750179",
+                  "level_4": " 88",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "rms200BoardTemperature",
+                  "recent": "58.00 C"
+                },
+                {
+                  "name": "voltageOfCapacitor1",
+                  "recent": "2.254 V"
+                },
+                {
+                  "name": "voltageOfCapacitor2",
+                  "recent": "2.262 V"
+                },
+                {
+                  "name": "voltageOfCapacitor3",
+                  "recent": "2.225 V"
+                },
+                {
+                  "name": "voltageOfCapacitor4",
+                  "recent": "2.208 V"
+                },
+                {
+                  "level_0": " 4650290",
+                  "level_1": " 16740368",
+                  "level_2": " 1048777",
+                  "level_3": " 123763",
+                  "level_4": " 93659",
+                  "level_5": " 80709",
+                  "level_6": " 62446",
+                  "level_7": " 27488",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "capacitorPackVoltage",
+                  "recent": "8.949 V"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 0",
+                  "level_2": " 0",
+                  "level_3": " 19",
+                  "level_4": " 38",
+                  "level_5": " 18",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 2",
+                  "level_9": " 66",
+                  "name": "capacitorPackVoltageAtEndOfFlushToFlash",
+                  "recent": "4.470 V"
+                },
+                {
+                  "name": "currentDerivedFromV3V4",
+                  "recent": "0.004 A"
+                },
+                {
+                  "level_0": " 8",
+                  "level_1": " 6",
+                  "level_2": " 4",
+                  "level_3": " 106",
+                  "level_4": " 17",
+                  "level_5": " 2",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "derivedEnergy",
+                  "recent": "190 Joules"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 0",
+                  "level_2": " 0",
+                  "level_3": " 0",
+                  "level_4": " 0",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 18",
+                  "level_9": " 230",
+                  "name": "derivedCapacitanceOfThePack",
+                  "recent": "7.322 F"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 248",
+                  "level_2": " 0",
+                  "level_3": " 0",
+                  "level_4": " 0",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "derivedEsrOfCapacitorPack",
+                  "recent": "0.096 Ohm"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 0",
+                  "level_2": " 0",
+                  "level_3": " 0",
+                  "level_4": " 124",
+                  "level_5": " 19",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "timeToRunFlushToFlash",
+                  "recent": "22.39 Seconds"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 0",
+                  "level_2": " 77",
+                  "level_3": " 0",
+                  "level_4": " 0",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "timeToRunRestore",
+                  "recent": "20.49 Seconds"
+                },
+                {
+                  "level_0": " 0",
+                  "level_1": " 54",
+                  "level_2": " 17",
+                  "level_3": " 6",
+                  "level_4": " 0",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 1",
+                  "name": "timeToChargeCapacitors",
+                  "recent": "42 Seconds"
+                },
+                {
+                  "level_0": " 4945370",
+                  "level_1": " 22054",
+                  "level_2": " 0",
+                  "level_3": " 0",
+                  "level_4": " 0",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "correctableBitsInErrorOnReadingAPage"
+                },
+                {
+                  "level_0": " 22054",
+                  "level_1": " 0",
+                  "level_2": " 0",
+                  "level_3": " 0",
+                  "level_4": " 0",
+                  "level_5": " 0",
+                  "level_6": " 0",
+                  "level_7": " 0",
+                  "level_8": " 0",
+                  "level_9": " 0",
+                  "name": "correctableBitsInErrorOnReadingTheWorstBchRegionOfAPage"
+                },
+                {
+                  "errorPeriod": [
+                    {
+                      "duration": "9",
+                      "startTime": "2015-11-26 16:29:51",
+                      "worst": "8"
+                    },
+                    {
+                      "duration": "6",
+                      "startTime": "2015-11-26 16:30:06",
+                      "worst": "8"
+                    },
+                    {
+                      "duration": "15",
+                      "startTime": "2015-11-26 16:30:36",
+                      "worst": "8"
+                    }
+                  ],
+                  "level_0": " 0",
+                  "level_1": " 3924463",
+                  "level_2": " 337357",
+                  "level_3": " 5942",
+                  "level_4": " 451546",
+                  "level_5": " 17237788",
+                  "level_6": " 865372",
+                  "level_7": " 5022",
+                  "level_8": " 10",
+                  "level_9": " 0",
+                  "name": "fanInletAmbientTemperature",
+                  "recent": "46.55 C"
+                }
+              ],
+              "smartCounters": [
+                {
+                  "name": "numberOf512ByteBlocksReadFromDdr",
+                  "value": "141895819"
+                },
+                {
+                  "name": "numberOf512ByteBlocksWrittenToDdr",
+                  "value": "89867121104"
+                },
+                {
+                  "name": "numberOfHostReadCommands",
+                  "value": "9326735"
+                },
+                {
+                  "name": "numberOfHostWriteCommands",
+                  "value": "12090520050"
+                },
+                {
+                  "name": "controllerBusyTimeMinutes",
+                  "value": "37318"
+                },
+                {
+                  "name": "numberOfPowerCycles",
+                  "value": "133"
+                },
+                {
+                  "name": "powerOnHours",
+                  "value": "18611"
+                },
+                {
+                  "name": "unsafeShutdowns",
+                  "value": "56"
+                },
+                {
+                  "name": "mediaErrors",
+                  "value": "0"
+                },
+                {
+                  "name": "numberOfErrorLogs",
+                  "value": "13"
+                }
+              ],
+              "snapshotTime": "2016-10-13 16:33:27"
+            },
+            "firmware": {
+              "activeSlotNumber": "2",
+              "slot1Version": "1e5817bc",
+              "slot2Version": "5fb7565c",
+              "slot3Version": "1e5817bc",
+              "slot4Version": "1e5817bc"
+            },
+            "identify": {
+              "firmwareVersion": "5fb7565c on slot 2",
+              "hardwareRevision": "B04",
+              "modelNumber": "RMS-200",
+              "serialNumber": "0000866"
+            },
+            "smart": {
+              "availableSpace": "0%",
+              "availableSpaceThreshold": "0%",
+              "controllerBusyTimeMinutes": "37318",
+              "criticalErrorVector": "0x0",
+              "mediaErrors": "0",
+              "numberOf512ByteBlocksRead": "141895819",
+              "numberOf512ByteBlocksWritten": "89867121104",
+              "numberOfErrorInfoLogs": "13",
+              "numberOfHostReadCommands": "9326735",
+              "numberOfHostWriteCommands": "12090520050",
+              "numberOfPowerCycles": "133",
+              "powerOnHours": "18611",
+              "temperature": "331 Kelvin",
+              "unsafeShutdowns": "56"
+            }
+          },
+          "origin": null,
+          "platform": {
+            "chassisType": "R620",
+            "cpuModel": "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+            "nodeMemoryGB": 72,
+            "nodeType": "SF3010"
+          },
+          "serial": "4QSR3T1",
+          "storage": {
+            "storage_PCI:0000:00:1f.2": {
+              "businfo": "pci@0000:00:1f.2",
+              "clock": "66000000",
+              "description": "SATA controller",
+              "physid": "1f.2",
+              "product": "C600/X79 series chipset 6-Port SATA AHCI Controller",
+              "vendor": "Intel Corporation",
+              "version": "05",
+              "width": "32"
+            },
+            "storage_PCI:0000:04:00.0": {
+              "businfo": "pci@0000:04:00.0",
+              "clock": "33000000",
+              "description": "Non-Volatile memory controller",
+              "physid": "0",
+              "version": "03",
+              "width": "64"
+            },
+            "storage_PCI:0000:41:00.0": {
+              "businfo": "pci@0000:41:00.0",
+              "clock": "33000000",
+              "description": "Serial Attached SCSI controller",
+              "physid": "0",
+              "product": "SAS2008 PCI-Express Fusion-MPT SAS-2 [Falcon]",
+              "vendor": "LSI Logic / Symbios Logic",
+              "version": "03",
+              "width": "64"
+            }
+          },
+          "system": {
+            "bdr-en92_DMI:0100": {
+              "description": "Rack Mount Chassis",
+              "product": "SFx010 ()",
+              "serial": "4QSR3T1",
+              "vendor": "SolidFire",
+              "width": "64"
+            }
+          },
+          "systemMemory": {
+            "free": 47104417792,
+            "total": 75566792704,
+            "used": 28462374912
+          },
+          "uuid": "4C4C4544-0051-5310-8052-B4C04F335431"
+        }
+      }
+    }
+  }
+}
