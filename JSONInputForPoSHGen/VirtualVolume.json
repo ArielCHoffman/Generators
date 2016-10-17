@@ -1,0 +1,1828 @@
+{
+  "types": [
+    {
+      "name": "VasaProviderID",
+      "alias": "UUID"
+    },
+    {
+      "name": "VvolVolumeID",
+      "alias": "UUID"
+    },
+    {
+      "name": "VvolBindingID",
+      "alias": "uint64"
+    },
+    {
+      "name": "VvolHostID",
+      "alias": "UUID"
+    },
+    {
+      "name": "VvolClusterID",
+      "alias": "UUID"
+    },
+    {
+      "name": "VvolTaskID",
+      "alias": "UUID"
+    },
+    {
+      "name": "VvolBitmap",
+      "alias": "string"
+    },
+    {
+      "name": "uint64",
+      "alias": "long"
+    },
+    {
+      "name": "uint32",
+      "alias": "long"
+    },
+    {
+      "name": "uint16",
+      "alias": "integer"
+    },
+    {
+      "name": "VvolOperationType",
+      "alias": "string",
+      "restriction": {
+        "enum": [
+          {
+            "value": "unknown"
+          },
+          {
+            "value": "prepare"
+          },
+          {
+            "value": "snapshot"
+          },
+          {
+            "value": "rollback"
+          },
+          {
+            "value": "clone"
+          },
+          {
+            "value": "fastClone"
+          },
+          {
+            "value": "coppydiffs"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VirtualVolumeInfo",
+      "members": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID"
+        },
+        {
+          "name": "parentVirtualVolumeID",
+          "type": "VvolVolumeID"
+        },
+        {
+          "name": "storageContainerID",
+          "type": "StorageContainerID"
+        },
+        {
+          "name": "volumeID",
+          "type": "VolumeID"
+        },
+        {
+          "name": "snapshotID",
+          "type": "SnapshotID"
+        },
+        {
+          "name": "virtualVolumeType",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "VvolVolumeStatus"
+        },
+        {
+          "name": "bindings",
+          "type": [
+            "VvolBindingID"
+          ]
+        },
+        {
+          "name": "children",
+          "type": [
+            "VvolVolumeID"
+          ]
+        },
+        {
+          "name": "metadata",
+          "type": "Attributes"
+        }
+      ]
+    },
+    {
+      "name": "VvolVolumeStatus",
+      "alias": "string",
+      "restriction": {
+        "enum": [
+          {
+            "value": "Updating",
+            "documentation": "Virtual Volume is being processed in response to a clone or snapshot."
+          },
+          {
+            "value": "Waiting",
+            "documentation": "Virtual Volume is waiting for snapshotVirtualVolume to complete the snapshot."
+          },
+          {
+            "value": "Ready",
+            "documentation": "Virtual Volume is ready for general purpose use."
+          }
+        ]
+      }
+    },
+    {
+      "name": "VvolTaskStatus",
+      "alias": "string",
+      "restriction": {
+        "enum": [
+          {
+            "value": "error",
+            "documentation": "Virtual Volume Task encountered an error."
+          },
+          {
+            "value": "queued",
+            "documentation": "Virtual Volume Task is waiting to start."
+          },
+          {
+            "value": "running",
+            "documentation": "Virtual Volume Task is still running."
+          },
+          {
+            "value": "success",
+            "documentation": "Virtual Volume Task completed successfully."
+          }
+        ]
+      }
+    },
+    {
+      "name": "VvolBindContext",
+      "alias": "string",
+      "restriction": {
+        "enum": [
+          {
+            "value": "normal",
+            "documentation": "Normal Virtual Volume bind."
+          },
+          {
+            "value": "start",
+            "documentation": "Virtual Volume bind is starting."
+          }
+        ]
+      }
+    },
+    {
+      "name": "VvolUnbindContext",
+      "alias": "string",
+      "restriction": {
+        "enum": [
+          {
+            "value": "normal",
+            "documentation": "Normal Virtual Volume unbind."
+          },
+          {
+            "value": "start",
+            "documentation": "Virtual Volume unbind is starting."
+          },
+          {
+            "value": "end",
+            "documentation": "Virtual Volume unbind is ending."
+          }
+        ]
+      }
+    },
+    {
+      "name": "VirtualVolumeBinding",
+      "members": [
+        {
+          "type": {
+            "name": "UUID"
+          },
+          "documentation": "The unique ID of the protocol endpoint.",
+          "name": "protocolEndpointID"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "documentation": "The scsiNAADeviceID of the protocol endpoint. For more information, see protocolEndpoint.",
+          "name": "protocolEndpointInBandID"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "documentation": "The type of protocol endpoint. SCSI is the only value returned for the protocol endpoint type.",
+          "name": "protocolEndpointType"
+        },
+        {
+          "type": {
+            "name": "integer"
+          },
+          "documentation": "The unique ID of the virtual volume binding object.",
+          "name": "virtualVolumeBindingID"
+        },
+        {
+          "type": {
+            "name": "UUID"
+          },
+          "documentation": "The unique ID of the virtual volume host.",
+          "name": "virtualVolumeHostID"
+        },
+        {
+          "type": {
+            "name": "UUID"
+          },
+          "documentation": "The unique ID of the virtual volume.",
+          "name": "virtualVolumeID"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "documentation": "The secondary ID of the virtual volume.",
+          "name": "virtualVolumeSecondaryID"
+        },
+        {
+          "type": {
+            "name": "VirtualVolumeInfo"
+          },
+          "documentation": "An object describing the bound volume or snapshot.",
+          "name": "virtualVolume"
+        },
+        {
+          "type": {
+            "name": "UUID"
+          },
+          "documentation": "An object describing the protocol endpoint to which the virtual volume is bound.",
+          "name": "protocolEndpoint"
+        },
+        {
+          "type": {
+            "name": "VirtualVolumeHost"
+          },
+          "documentation": "An object describing the host to which this binding corresponds.",
+          "name": "virtualVolumeHost"
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeHost",
+      "members": [
+        {
+          "name": "virtualVolumeHostID",
+          "type": "VvolHostID"
+        },
+        {
+          "name": "clusterID",
+          "type": "VvolClusterID"
+        },
+        {
+          "name": "visibleProtocolEndpointIDs",
+          "type": [
+            "UUID"
+          ]
+        },
+        {
+          "name": "bindings",
+          "type": [
+            "VvolBindingID"
+          ]
+        },
+        {
+          "name": "initiatorNames",
+          "type": [
+            "string"
+          ]
+        },
+        {
+          "name": "hostAddress",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeTask",
+      "members": [
+        {
+          "name": "virtualVolumeTaskID",
+          "type": "VvolTaskID"
+        },
+        {
+          "name": "virtualvolumeID",
+          "type": "VvolVolumeID"
+        },
+        {
+          "name": "cloneVirtualVolumeID",
+          "type": "VvolVolumeID"
+        },
+        {
+          "name": "status",
+          "type": "VvolTaskStatus"
+        },
+        {
+          "name": "operation",
+          "type": "VvolOperationType"
+        },
+        {
+          "name": "virtualVolumeHostID",
+          "type": "VvolHostID"
+        },
+        {
+          "name": "parentMetadata",
+          "type": "Attributes"
+        },
+        {
+          "name": "parentTotalSize",
+          "type": "uint64"
+        },
+        {
+          "name": "parentUsedSize",
+          "type": "uint64"
+        },
+        {
+          "name": "cancelled",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "VasaProviderInfo",
+      "members": [
+        {
+          "name": "keystore",
+          "type": "string"
+        },
+        {
+          "name": "controlPort",
+          "type": "uint16"
+        },
+        {
+          "name": "vasaProviderID",
+          "type": "VasaProviderID"
+        },
+        {
+          "name": "options",
+          "type": "Attributes"
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeNullResult",
+      "members": []
+    },
+    {
+      "name": "VasaProviderInfoResult",
+      "members": [
+        {
+          "name": "vasaProviderInfo",
+          "type": "VasaProviderInfo"
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeSyncResult",
+      "members": [
+        {
+          "name": "volumeID",
+          "type": "VolumeID",
+          "documentation": "VolumeID for the newly created volume."
+        },
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "virtualVolumeID for the newly created volume."
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeAsyncResult",
+      "members": [
+        {
+          "name": "virtualVolumeTaskID",
+          "type": "VvolTaskID",
+          "documentation": "The ID of the clone task."
+        },
+        {
+          "name": "volumeID",
+          "type": "VolumeID",
+          "documentation": "The volume ID of the newly-created clone."
+        },
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "virtualVolumeID for the newly created clone."
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeBitmapResult",
+      "members": [
+        {
+          "name": "bitmap",
+          "type": "VvolBitmap",
+          "documentation": "The b64 bitmap."
+        },
+        {
+          "name": "segmentLength",
+          "type": "uint64",
+          "documentation": "Byte length, adjusted to end on a chunk boundary."
+        }
+      ]
+    },
+    {
+      "name": "ListVirtualVolumesResult",
+      "members": [
+        {
+          "name": "virtualVolumes",
+          "type": [
+            "VirtualVolumeInfo"
+          ]
+        },
+        {
+          "name": "nextVirtualVolumeID",
+          "type": "VvolVolumeID"
+        }
+      ]
+    },
+    {
+      "name": "QueryVirtualVolumeMetadataResult",
+      "members": [
+        {
+          "name": "matchingVirtualVolumeIDs",
+          "type": [
+            "VvolVolumeID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PrepareVirtualSnapshotResult",
+      "members": [
+        {
+          "name": "virtualVolumeTaskID",
+          "type": "VvolTaskID",
+          "documentation": "The ID of the clone task."
+        },
+        {
+          "name": "volumeID",
+          "type": "VolumeID",
+          "documentation": "The volume ID of the newly-created clone."
+        },
+        {
+          "name": "snapshotID",
+          "type": "SnapshotID",
+          "documentation": "snapshotID for the prepared VVol snapshot."
+        },
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "virtualVolumeID for the newly created clone."
+        }
+      ]
+    },
+    {
+      "name": "SnapshotVirtualVolumeResult",
+      "members": [
+        {
+          "name": "volumeID",
+          "type": "VolumeID",
+          "documentation": "The volume ID of the newly-created clone."
+        },
+        {
+          "name": "snapshotID",
+          "type": "SnapshotID",
+          "documentation": "snapshotID for the prepared VVol snapshot."
+        },
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "virtualVolumeID for the newly created clone."
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeUnsharedChunkResult",
+      "members": [
+        {
+          "name": "chunks",
+          "type": "uint64",
+          "documentation": "Number of allocated/unshared chunks."
+        },
+        {
+          "name": "scannedChunks",
+          "type": "uint64",
+          "documentation": "Number of chunks scanned."
+        },
+        {
+          "name": "chunkSize",
+          "type": "uint64",
+          "documentation": "Size of each chunk."
+        }
+      ]
+    },
+    {
+      "name": "ListVirtualVolumeHostsResult",
+      "members": [
+        {
+          "name": "hosts",
+          "type": [
+            "VirtualVolumeHost"
+          ],
+          "documentation": "List of known ESX hosts."
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeHostResult",
+      "members": [
+        {
+          "name": "host",
+          "type": "VirtualVolumeHost"
+        }
+      ]
+    },
+    {
+      "name": "ListVirtualVolumeTasksResult",
+      "members": [
+        {
+          "name": "tasks",
+          "type": [
+            "VirtualVolumeTask"
+          ],
+          "documentation": "List of VVol Async Tasks."
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeTaskResult",
+      "members": [
+        {
+          "name": "task",
+          "type": "VirtualVolumeTask",
+          "documentation": "Returns the state of a VVol Async Task."
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeBindResult",
+      "members": [
+        {
+          "name": "binding",
+          "type": "VirtualVolumeBinding",
+          "documentation": "Describes the VVol <-> Host binding."
+        }
+      ]
+    },
+    {
+      "name": "ListVirtualVolumeBindingsResult",
+      "members": [
+        {
+          "name": "bindings",
+          "type": [
+            "VirtualVolumeBinding"
+          ],
+          "documentation": "Describes the VVol <-> Host binding."
+        }
+      ]
+    },
+    {
+      "name": "UnbindResult",
+      "members": [
+        {
+          "name": "fault",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "VirtualVolumeUnbindResult",
+      "members": [
+        {
+          "name": "unbindResults",
+          "type": [
+            "UnbindResult"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UnbindArguments",
+      "members": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID"
+        },
+        {
+          "name": "protocolEndpointType",
+          "type": "ProtocolEndpointType"
+        },
+        {
+          "name": "protocolEndpointInBandID",
+          "type": "string"
+        },
+        {
+          "name": "virtualVolumeSecondaryID",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GetStorageContainerEfficiencyResult",
+      "members": [
+        {
+          "name": "compression",
+          "type": "float",
+          "documentation": "The amount of space being saved by compressing data on a single volume. Stated as a ratio where \"1\" means data has been stored without being compressed."
+        },
+        {
+          "name": "deduplication",
+          "type": "float",
+          "documentation": "The amount of space being saved on a single volume by not duplicating data. Stated as a ratio."
+        },
+        {
+          "name": "missingVolumes",
+          "type": [
+            "integer"
+          ],
+          "documentation": "The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle."
+        },
+        {
+          "name": "thinProvisioning",
+          "type": "float",
+          "documentation": "The ratio of space used to the amount of space allocated for storing data. Stated as a ratio."
+        },
+        {
+          "name": "timestamp",
+          "type": "TimePoint",
+          "documentation": "The last time efficiency data was collected after Garbage Collection (GC)."
+        }
+      ]
+    },
+    {
+      "name": "GetFeatureStatusResult",
+      "members": [
+        {
+          "name": "features",
+          "type": ["Feature"],
+          "documentation": "An array of feature objects indicating the feature name and its status."
+        }
+      ]
+    },
+    {
+      "name": "Feature",
+      "members": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "documentation": "True if the feature is enabled, otherwise false."
+        },
+        {
+          "name": "feature",
+          "type": "string",
+          "documentation": "The name of the feature."
+        }
+      ]
+    },
+    {
+      "name": "EnableFeatureResult",
+      "members": []
+    },
+	{
+	  "name": "GetVirtualVolumeCountResult", 
+	  "members": [
+		{
+		  "type": {
+			"name": "integer"
+		  }, 
+		  "documentation": "The number of virtual volumes currently in the system.", 
+		  "name": "count"
+		}
+	  ]
+	}
+  ],
+  "methods": [
+    {
+      "name": "CreateVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "CreateVirtualVolume is used to create a new (empty) Virtual Volume on the cluster.",
+        "When the volume is created successfully it is available for connection via PE."
+      ],
+      "security": {
+        "groups": [
+          "write"
+        ]
+      },
+      "params": [
+        {
+          "name": "name",
+          "type": "Name",
+          "documentation": [
+            "Name of the Virtual Volume.",
+            "Not required to be unique, but it is recommended.",
+            "May be 1 to 64 characters in length."
+          ]
+        },
+        {
+          "name": "storageContainerID",
+          "type": "StorageContainerID",
+          "documentation": "UUID for the Storage Container of this volume."
+        },
+        {
+          "name": "virtualVolumeType",
+          "type": "string",
+          "documentation": "VMW_TYPE value for this volume."
+        },
+        {
+          "name": "totalSize",
+          "type": "uint64",
+          "documentation": "Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size."
+        },
+        {
+          "name": "qos",
+          "type": {
+            "name": "QoS",
+            "optional": true
+          },
+          "documentation": [
+            "Initial quality of service settings for this volume.",
+            "<br/><br/>",
+            "Volumes created without specified QoS values are created with the default values for QoS.",
+            "Default values for a volume can be found by running the GetDefaultQoS method."
+          ]
+        },
+        {
+          "name": "metadata",
+          "type": {
+            "name": "Attributes",
+            "optional": true
+          },
+          "documentation": [
+            "List of name/value pairs to save in the volume's metadata."
+          ]
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeSyncResult"
+      }
+    },
+    {
+      "name": "DeleteVirtualVolumes",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "DeleteVirtualVolume marks an active volume for deletion.",
+        "It is purged (permanently deleted) after the cleanup interval elapses.",
+        "After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.",
+        "It is not returned in target discovery requests.",
+        "<br/><br/>",
+        "Any snapshots of a volume that has been marked to delete are not affected.",
+        "Snapshots are kept until the volume is purged from the system.",
+        "<br/><br/>",
+        "If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.",
+        "<br/><br/>",
+        "If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.",
+        "The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.",
+        "Until the deleted volume is purged, it can be restored and data transfers resumes.",
+        "If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.",
+        "The purged volume becomes permanently unavailable."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumes",
+          "type": [
+            "VvolVolumeID"
+          ],
+          "documentation": "The UUID of the volume to delete."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "security": {
+        "groups": [
+          "write"
+        ]
+      },
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "ListVirtualVolumes",
+      "security": {
+        "groups": [
+          "read"
+        ]
+      },
+      "params": [
+        {
+          "name": "startVirtualVolumeID",
+          "type": {
+            "name": "VvolVolumeID",
+            "optional": true
+          },
+          "documentation": [
+            "The ID of the first Virtual Volume to list.",
+            "This can be useful for paging results.",
+            "By default, this lists all Virtual Volumes."
+          ]
+        },
+        {
+          "name": "limit",
+          "type": {
+            "name": "size_t",
+            "optional": true
+          },
+          "default": 10000,
+          "documentation": [
+            "The maximum number of volumes to return from the API."
+          ]
+        },
+        {
+          "name": "virtualVolumeIDs",
+          "type": {
+            "name": [
+              "VvolVolumeID"
+            ],
+            "optional": true
+          },
+          "documentation": [
+            "List of Virtual Volume IDs to get."
+          ]
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "ListVirtualVolumesResult"
+      }
+    },
+    {
+      "name": "ModifyVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "ModifyVirtualVolume is used to modify settings on an existing virtual volume."
+      ],
+      "security": {
+        "groups": [
+          "write"
+        ]
+      },
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "VvolVolumeID for the volume to be modified."
+        },
+        {
+          "name": "qos",
+          "type": {
+            "name": "QoS",
+            "optional": true
+          },
+          "documentation": "New quality of service settings for this volume."
+        },
+        {
+          "name": "totalSize",
+          "type": {
+            "name": "uint64",
+            "optional": true
+          },
+          "documentation": [
+            "New size of the volume in bytes.",
+            "Size is rounded up to the nearest 1MiB size.",
+            "This parameter can only be used to *increase* the size of a volume."
+          ]
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "ModifyVirtualVolumeMetadata",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "ModifyVirtualVolumeMetadata is used to selectively modify the VVol metadata."
+      ],
+      "security": {
+        "groups": [
+          "write"
+        ]
+      },
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "VvolVolumeID for the volume to be modified."
+        },
+        {
+          "name": "metadata",
+          "type": "Attributes"
+        },
+        {
+          "name": "removeKeys",
+          "type": [
+            "string"
+          ]
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "QueryVirtualVolumeMetadata",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "QueryVirtualVolumeMetadata returns a list of VVols matching a metadata query."
+      ],
+      "params": [
+        {
+          "name": "queryConstraints",
+          "type": {
+            "name": "Attributes",
+            "optional": true
+          }
+        },
+        {
+          "name": "wildcardConstraints",
+          "type": {
+            "name": [
+              "string"
+            ],
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "QueryVirtualVolumeMetadataResult"
+      }
+    },
+    {
+      "name": "CloneVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "CloneVirtualVolume is used to execute a VMware Virtual Volume clone."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to clone."
+        },
+        {
+          "name": "name",
+          "type": {
+            "name": "Name",
+            "optional": true
+          },
+          "documentation": "The name for the newly-created volume."
+        },
+        {
+          "name": "qos",
+          "type": {
+            "name": "QoS",
+            "optional": true
+          },
+          "documentation": "New quality of service settings for this volume."
+        },
+        {
+          "name": "metadata",
+          "type": {
+            "name": "Attributes",
+            "optional": true
+          }
+        },
+        {
+          "name": "newContainerID",
+          "type": {
+            "name": "StorageContainerID",
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeAsyncResult"
+      }
+    },
+    {
+      "name": "FastCloneVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "FastCloneVirtualVolume is used to execute a VMware Virtual Volume fast clone."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to clone."
+        },
+        {
+          "name": "name",
+          "type": {
+            "name": "Name",
+            "optional": true
+          },
+          "documentation": "The name for the newly-created volume."
+        },
+        {
+          "name": "qos",
+          "type": {
+            "name": "QoS",
+            "optional": true
+          },
+          "documentation": "New quality of service settings for this volume."
+        },
+        {
+          "name": "metadata",
+          "type": {
+            "name": "Attributes",
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeAsyncResult"
+      }
+    },
+    {
+      "name": "PrepareVirtualSnapshot",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to clone."
+        },
+        {
+          "name": "name",
+          "type": {
+            "name": "Name",
+            "optional": true
+          },
+          "documentation": "The name for the newly-created volume."
+        },
+        {
+          "name": "writableSnapshot",
+          "type": {
+            "name": "boolean",
+            "optional": true
+          },
+          "documentation": "Will the snapshot be writable?"
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "PrepareVirtualSnapshotResult"
+      }
+    },
+    {
+      "name": "SnapshotVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "SnapshotVirtualVolume is used to take a VMware Virtual Volume snapshot."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to clone."
+        },
+        {
+          "name": "timeout",
+          "type": "size_t",
+          "documentation": "Number of seconds to complete or fail."
+        },
+        {
+          "name": "metadata",
+          "type": {
+            "name": "Attributes",
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "SnapshotVirtualVolumeResult"
+      }
+    },
+    {
+      "name": "RollbackVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "RollbackVirtualVolume is used to restore a VMware Virtual Volume snapshot."
+      ],
+      "params": [
+        {
+          "name": "srcVirtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume snapshot."
+        },
+        {
+          "name": "dstVirtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to restore to."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeAsyncResult"
+      }
+    },
+    {
+      "name": "GetVirtualVolumeAllocatedBitmap",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "GetVirtualVolumeAllocatedBitmap returns a b64-encoded block of data ",
+        "representing a bitmap where non-zero bits indicate the allocation of a ",
+        "segment (LBA range) of the volume."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume."
+        },
+        {
+          "name": "segmentStart",
+          "type": "uint64",
+          "documentation": "Byte offset."
+        },
+        {
+          "name": "segmentLength",
+          "type": "uint64",
+          "documentation": "Byte length adjusted to end on a chunk boundary."
+        },
+        {
+          "name": "chunkSize",
+          "type": "uint64",
+          "documentation": "Number of bytes represented by one bit in the bitmap."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeBitmapResult"
+      }
+    },
+    {
+      "name": "GetVirtualVolumeUnsharedBitmap",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "GetVirtualVolumeAllocatedBitmap returns a b64-encoded block of data ",
+        "representing a bitmap where non-zero bits indicate that data is not the same ",
+        "between two volumes for a common segment (LBA range) of the volumes."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume."
+        },
+        {
+          "name": "baseVirtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to compare against."
+        },
+        {
+          "name": "segmentStart",
+          "type": "uint64",
+          "documentation": "Byte offset."
+        },
+        {
+          "name": "segmentLength",
+          "type": "uint64",
+          "documentation": "Byte length adjusted to end on a chunk boundary."
+        },
+        {
+          "name": "chunkSize",
+          "type": "uint32",
+          "documentation": "Number of bytes represented by one bit in the bitmap."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeBitmapResult"
+      }
+    },
+    {
+      "name": "GetVirtualVolumeUnsharedChunks",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of ",
+        "chunks not shared between two volumes. This call will return results in less ",
+        "than 30 seconds. If the specified VVol and the base VVil are not related, an ",
+        "error is thrown. If the offset/length combination is invalid or out fo range ",
+        "an error is thrown."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume."
+        },
+        {
+          "name": "baseVirtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to compare against."
+        },
+        {
+          "name": "segmentStart",
+          "type": "uint64",
+          "documentation": "Start Byte offset."
+        },
+        {
+          "name": "segmentLength",
+          "type": "uint64",
+          "documentation": "Length of the scan segment in bytes."
+        },
+        {
+          "name": "chunkSize",
+          "type": "uint32",
+          "documentation": "Number of bytes represented by one bit in the bitmap."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeUnsharedChunkResult"
+      }
+    },
+    {
+      "name": "CopyDiffsToVirtualVolume",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "CopyDiffsToVirtualVolume is a three-way merge function."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the snapshot Virtual Volume."
+        },
+        {
+          "name": "baseVirtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the base Virtual Volume."
+        },
+        {
+          "name": "dstVirtualVolumeID",
+          "type": "VvolVolumeID",
+          "documentation": "The ID of the Virtual Volume to be overwritten."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeAsyncResult"
+      }
+    },
+    {
+      "name": "CreateVirtualVolumeHost",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "CreateVirtualVolumeHost creates a new ESX host."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeHostID",
+          "type": "VvolHostID",
+          "documentation": "The GUID of the ESX host."
+        },
+        {
+          "name": "clusterID",
+          "type": "VvolClusterID",
+          "documentation": "The GUID of the ESX Cluster."
+        },
+        {
+          "name": "initiatorNames",
+          "type": {
+            "name": [
+              "string"
+            ],
+            "optional": true
+          }
+        },
+        {
+          "name": "visibleProtocolEndpointIDs",
+          "type": {
+            "name": [
+              "ProtocolEndpointID"
+            ],
+            "optional": true
+          },
+          "documentation": "A list of PEs the host is aware of."
+        },
+        {
+          "name": "hostAddress",
+          "type": {
+            "name": "string",
+            "optional": true
+          },
+          "documentation": "IP or DNS name for the host."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "ListVirtualVolumeHosts",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "ListVirtualVolumeHosts returns a list of known ESX hosts."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeHostIDs",
+          "type": {
+            "name": [
+              "VvolHostID"
+            ],
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "ListVirtualVolumeHostsResult"
+      }
+    },
+    {
+      "name": "ModifyVirtualVolumeHost",
+      "documentation": [
+        "ModifyVirtualVolumeHost changes an existing ESX host."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeHostID",
+          "type": "VvolHostID",
+          "documentation": "The GUID of the ESX host."
+        },
+        {
+          "name": "clusterID",
+          "type": {
+            "name": "VvolClusterID",
+            "optional": true
+          },
+          "documentation": "The GUID of the ESX Cluster."
+        },
+        {
+          "name": "visibleProtocolEndpointIDs",
+          "type": {
+            "name": [
+              "ProtocolEndpointID"
+            ],
+            "optional": true
+          },
+          "documentation": "A list of PEs the host is aware of."
+        },
+        {
+          "name": "initiatorNames",
+          "type": {
+            "name": [
+              "string"
+            ],
+            "optional": true
+          },
+          "documentation": "List of iSCSI initiator IQNs for the host."
+        },
+        {
+          "name": "hostAddress",
+          "type": {
+            "name": "string",
+            "optional": true
+          },
+          "documentation": "IP or DNS name for the host."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "GetVirtualVolumeTaskUpdate",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeTaskID",
+          "type": "VvolTaskID",
+          "documentation": "The UUID of the VVol Task."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeTaskResult"
+      }
+    },
+    {
+      "name": "ListVirtualVolumeTasks",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "ListVirtualVolumeTasks returns a list of VVol Async Tasks."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeTaskIDs",
+          "type": {
+            "name": [
+              "VvolTaskID"
+            ],
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "ListVirtualVolumeTasksResult"
+      }
+    },
+    {
+      "name": "CancelVirtualVolumeTask",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "CancelVirtualVolumeTask attempts to cancel the VVol Async Task."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeTaskID",
+          "type": "VvolTaskID",
+          "documentation": "The UUID of the VVol Task to cancel."
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "BindVirtualVolumes",
+      "documentation": [
+        "BindVirtualVolume binds a VVol with a Host."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeIDs",
+          "type": [
+            "VvolVolumeID"
+          ],
+          "documentation": "The UUID of the VVol to bind."
+        },
+        {
+          "name": "virtualVolumeHostID",
+          "type": "VvolHostID",
+          "documentation": "The UUID of the ESX host."
+        },
+        {
+          "name": "bindContext",
+          "type": "VvolBindContext",
+          "documentation": "Normal or Start?"
+        }
+      ],
+      "returnInfo": {
+        "type": "ListVirtualVolumeBindingsResult"
+      }
+    },
+    {
+      "name": "ListVirtualVolumeBindings",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "ListVirtualVolumeBindings returns a list of VVol bindings."
+      ],
+      "params": [
+        {
+          "name": "virtualVolumeBindingIDs",
+          "type": {
+            "name": [
+              "VvolBindingID"
+            ],
+            "optional": true
+          }
+        },
+        {
+          "name": "callingVirtualVolumeHostID",
+          "type": {
+            "name": "VvolHostID",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "ListVirtualVolumeBindingsResult"
+      }
+    },
+    {
+      "name": "UnbindVirtualVolumes",
+      "documentation": [
+        "UnbindGetVirtualVolume removes the VVol <-> Host binding."
+      ],
+      "params": [
+        {
+          "name": "unbindContext",
+          "type": "VvolUnbindContext",
+          "documentation": "Normal, Start, or End?"
+        },
+        {
+          "name": "virtualVolumeHostID",
+          "type": "VvolHostID"
+        },
+        {
+          "name": "unbindArgs",
+          "type": [
+            "UnbindArguments"
+          ]
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeUnbindResult"
+      }
+    },
+    {
+      "name": "ModifyVasaProviderInfo",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "Update the Vasa Provider info"
+      ],
+      "params": [
+        {
+          "name": "keystore",
+          "type": {
+            "name": "string",
+            "optional": true
+          },
+          "documentation": "Signed SSL certificate for the Vasa Provider"
+        },
+        {
+          "name": "vasaProviderID",
+          "type": {
+            "name": "VasaProviderID",
+            "optional": true
+          },
+          "documentation": "UUID identifying the vasa provider"
+        },
+        {
+          "name": "options",
+          "type": {
+            "name": "Attributes",
+            "optional": true
+          }
+        }
+      ],
+      "returnInfo": {
+        "type": "VirtualVolumeNullResult"
+      }
+    },
+    {
+      "name": "GetVasaProviderInfo",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "Gets the Vasa Provider info"
+      ],
+      "params": [],
+      "returnInfo": {
+        "type": "VasaProviderInfoResult"
+      }
+    },
+    {
+      "name": "GetStorageContainerEfficiency",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "Enables retrieval of efficiency information about a virtual volume storage container."
+      ],
+      "params": [
+        {
+          "name": "storageContainerID",
+          "type": "StorageContainerID",
+          "documentation": "The ID of the storage container for which to retrieve efficiency information."
+        }
+      ],
+      "returnInfo": {
+        "type": "GetStorageContainerEfficiencyResult"
+      }
+    },
+    {
+      "name": "GetVirtualVolumeCount",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "Enables retrieval of the number of virtual volumes currently in the system."
+      ],
+      "params": [],
+      "returnInfo": {
+        "type": "GetVirtualVolumeCountResult"
+      }
+    },
+    {
+      "name": "GetFeatureStatus",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "GetFeatureStatus allows you to retrieve the status of a cluster feature."
+      ],
+      "params": [
+        {
+          "name": "feature",
+          "type": {
+            "name" : "string",
+            "optional" : true
+          },
+
+          "documentation":[
+            "Valid values:<br/>",
+            "<b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature."
+          ]
+        }
+      ],
+      "returnInfo": {
+        "type": "GetFeatureStatusResult"
+      }
+    },
+    {
+      "name": "EnableFeature",
+      "since" : "9.0",
+      "release": "Private",
+      "documentation": [
+        "EnableFeature allows you to enable cluster features that are disabled by default."
+      ],
+      "params": [
+        {
+          "name": "feature",
+          "type": "string",
+          "documentation":[
+            "Valid values:<br/>",
+            "<b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature."
+          ]
+        }
+      ],
+      "returnInfo": {
+        "type": "EnableFeatureResult"
+      }
+    }
+  ]
+}

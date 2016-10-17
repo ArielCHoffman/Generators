@@ -1,0 +1,10 @@
+{
+  "id": null,
+  "result": {
+    "compression": 1,
+    "deduplication": 1,
+    "missingVolumes": [],
+    "thinProvisioning": 1,
+    "timestamp": "2016-10-14T22:41:24Z"
+  }
+}

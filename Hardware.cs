@@ -16,7 +16,7 @@ namespace Element.Tests
             SolidFireElement sfe = new SolidFireElement(mock.Object);
 
             // Act
-            GetHardwareConfigResult result = sfe.GetClusterHardwareInfo();
+            GetClusterHardwareInfoResult result = sfe.GetClusterHardwareInfo();
 			Assert.IsTrue(result.ClusterHardwareInfo.Nodes.1.Network.Network:3_PCI:0000:01:00.3.Product == "NetXtreme II BCM57800 1/10 Gigabit Ethernet", "Died on .ClusterHardwareInfo.Nodes.1.Network.Network:3_PCI:0000:01:00.3.Product");
 			Assert.IsTrue(result.ClusterHardwareInfo.Nodes.1.Network.Network:3_PCI:0000:01:00.3.Capacity == "1000000000", "Died on .ClusterHardwareInfo.Nodes.1.Network.Network:3_PCI:0000:01:00.3.Capacity");
 			Assert.IsTrue(result.ClusterHardwareInfo.Nodes.1.Network.Network:3_PCI:0000:01:00.3.Description == "Ethernet interface", "Died on .ClusterHardwareInfo.Nodes.1.Network.Network:3_PCI:0000:01:00.3.Description");
@@ -828,7 +828,7 @@ namespace Element.Tests
             SolidFireElement sfe = new SolidFireElement(mock.Object);
 
             // Act
-            GetHardwareConfigResult result = sfe.GetNodeHardwareInfo();
+            GetNodeHardwareInfoResult result = sfe.GetNodeHardwareInfo();
 			Assert.IsTrue(result.NodeHardwareInfo.Network.Network:3_PCI:0000:01:00.3.Product == "NetXtreme II BCM57800 1/10 Gigabit Ethernet", "Died on .NodeHardwareInfo.Network.Network:3_PCI:0000:01:00.3.Product");
 			Assert.IsTrue(result.NodeHardwareInfo.Network.Network:3_PCI:0000:01:00.3.Capacity == "1000000000", "Died on .NodeHardwareInfo.Network.Network:3_PCI:0000:01:00.3.Capacity");
 			Assert.IsTrue(result.NodeHardwareInfo.Network.Network:3_PCI:0000:01:00.3.Description == "Ethernet interface", "Died on .NodeHardwareInfo.Network.Network:3_PCI:0000:01:00.3.Description");
@@ -1500,7 +1500,7 @@ namespace Element.Tests
             SolidFireElement sfe = new SolidFireElement(mock.Object);
 
             // Act
-            GetHardwareConfigResult result = sfe.GetNvramInfo();
+            GetNvramInfoResult result = sfe.GetNvramInfo();
 			Assert.IsTrue(result.NvramInfo.Status == "Warning", "Died on .NvramInfo.Status");
 			Assert.IsTrue(result.NvramInfo.Type == "RMS-200", "Died on .NvramInfo.Type");
 			Assert.IsTrue(result.NvramInfo.StatusInfo.Warning[0] == "excessiveCurrent (1x)", "Died on .NvramInfo.StatusInfo.Warning[0]");

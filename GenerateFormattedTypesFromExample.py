@@ -83,12 +83,15 @@ namespace Element.Tests
             SolidFireElement sfe = new SolidFireElement(mock.Object);
 
             // Act
-            GetHardwareConfigResult result = sfe."""+fileName.split('.')[0]+"""();
+            """+fileName.split('.')[0]+"""Result result = sfe."""+fileName.split('.')[0]+"""();
 			"""
 			unitTestOutput.write(methodHeader)
 			with open( file, 'r' ) as f:
 				data = f.read()
-			object = json.loads(data)
+			try:
+				object = json.loads(data)
+			except:
+				print(file+" could not be turned into json.")
 			#types = getTypes(object, "ExampleName")
 			#print(json.dumps(types, indent=4))
 

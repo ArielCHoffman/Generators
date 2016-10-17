@@ -98,6 +98,46 @@
         }
     ], 
     "types": [
+		{
+		  "name": "VasaProviderID",
+		  "alias": "UUID"
+		},
+		{
+		  "name": "VvolVolumeID",
+		  "alias": "UUID"
+		},
+		{
+		  "name": "VvolBindingID",
+		  "alias": "uint64"
+		},
+		{
+		  "name": "VvolHostID",
+		  "alias": "UUID"
+		},
+		{
+		  "name": "VvolClusterID",
+		  "alias": "UUID"
+		},
+		{
+		  "name": "VvolTaskID",
+		  "alias": "UUID"
+		},
+		{
+		  "name": "VvolBitmap",
+		  "alias": "string"
+		},
+		{
+		  "name": "uint64",
+		  "alias": "long"
+		},
+		{
+		  "name": "uint32",
+		  "alias": "long"
+		},
+		{
+		  "name": "uint16",
+		  "alias": "integer"
+		},
         {
             "name": "GetVirtualVolumeCountResult", 
             "members": [

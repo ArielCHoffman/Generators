@@ -1,0 +1,14 @@
+{
+  "id": null,
+  "result": {
+    "storageContainer": {
+      "accountID": 111,
+      "initiatorSecret": "Z5k)Cf~jiIxp3R4[",
+      "name": "ExampleName",
+      "protocolEndpointType": "SCSI",
+      "status": "active",
+      "storageContainerID": "2b0653fb-3d64-4ae0-9ef8-356e685b0b2e",
+      "targetSecret": "N07S4}aEh5oU]L0l"
+    }
+  }
+}
