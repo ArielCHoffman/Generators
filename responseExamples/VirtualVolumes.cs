@@ -1,7 +1,12 @@
+
+using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
+using SolidFire.Element.Api;
+using SolidFire.Core;
 using Moq;
 using System.Linq;
 using SolidFire.SDK.Adaptor;
-using System;
 
 namespace Element.Tests
 {
@@ -79,6 +84,6 @@ namespace Element.Tests
 			Assert.IsTrue(result.Tasks[0].Operation == "clone", "Died on .Tasks[0].Operation");
 			Assert.IsTrue(result.Tasks[0].VirtualvolumeID == "fafeb3a0-7dd9-4c9f-8a07-80e0bbf6f4d0", "Died on .Tasks[0].VirtualvolumeID");
 			
-        }"
+        }
     }
 }

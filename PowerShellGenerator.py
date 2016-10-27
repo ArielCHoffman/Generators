@@ -5,32 +5,61 @@ import copy
 import re
 
 def getCmdletName(jsonName):
-	return re.sub('(.)([A-Z].*)', r'\1-\2', jsonName, count=1)
+	return getCmdletVerb(jsonName)+getCmdletObject(jsonName)
 	
 def getClassName(jsonName):
 	return jsonName
 
 def getCmdletVerb(jsonName):
-	return re.sub('(.)[A-Z].*', r'\1', jsonName, count=1)
+	verb = re.sub('(.)[A-Z].*', r'\1', jsonName, count=1)
+	if(verb == "List"):
+		return "Get"
+	else:
+		return verb
 	
 def getCmdletObject(jsonName):
-	return re.sub('.([A-Z].*)', r'\1', jsonName, count=1)
+	return "SF"+re.sub('^.+?([A-Z].*)', r'\1', jsonName, count=1)
 
 def getCmdletAttribute(cmdletName):
 	verbAndObject = cmdletName.split("-")
 	return "[Cmdlet(VerbsCommon."+verbAndObject[0]+", \""+verbAndObject[1]+"\")]"
 	
 def getPrivateParameterName(paramName):
+	print("_"+paramName[0].lower()+paramName[1:])
 	return "_"+paramName[0].lower()+paramName[1:]
 	
 def getPublicParameterName(paramName):
 	return paramName[0].capitalize()+paramName[1:]
 
-def getPrivateParameterType(paramType):
+def getPrivateParameterType(paramType, types):
 	if(type(paramType) is dict):
-		return paramType["name"]
+		return convertTypeToPSType(paramType["name"], types)
 	else:
-		return paramType
+		return convertTypeToPSType(paramType, types)
+		
+def getDocumentation(method):
+	print(method["documentation"])
+	if(type(method["documentation"]) is list):
+		return method["documentation"]
+	return [method["documentation"]]
+
+def isRequest(method):
+	if("params" in method.keys() and len(method["params"])!=0):
+		return True
+	else:
+		return False
+		
+def convertTypeToPSType(paramType, types):
+	if(type(paramType) is list):
+		return convertTypeToPSType(paramType[0], types)+"[]"
+	if(paramType in types.keys()):
+		if("alias" in types[paramType]):
+			return convertTypeToPSType(types[paramType]["alias"], types)
+	if(paramType == "integer"):
+		return "Int64"
+	if(paramType == "UUID"):
+		return "Guid"
+	return paramType
 	
 def getNamespace(file):
 	return "SolidFire."+file.split(".")[0]
@@ -41,13 +70,14 @@ def generatePrivateDataRegion(method, types):
 	
 def getParameterAttributeOptions(parameter):
 	parameterAttributeOptions = []
-	if("optional" in parameter["type"].keys()):
-		parameterAttributeOptions += ["Mandatory = " + str(parameter["type"]["optional"])]
+	if(type(parameter["type"]) is dict and "optional" in parameter["type"].keys()):
+		parameterAttributeOptions += ["Mandatory = " + !bool(str(parameter["type"]["optional"])).lower()]
 	if("documentation" in parameter.keys()):
-		parameterAttributeOptions += ["HelpMessage = \"" + re.sub('"', '\"', str(parameter["documentation"]) + "\"")]
+		parameterAttributeOptions += ["HelpMessage = \"" + re.sub('"', r'\"', str(parameter["documentation"])) + "\""]
+		print(parameterAttributeOptions)
 	return parameterAttributeOptions
 
-def generatePowerShellCommandFromMethod(method, file):
+def generatePowerShellCommandFromMethod(method, file, types):
 	PSCommand = """#region Copyright
 /*
 * Copyright 2014-2016 NetApp, Inc. All Rights Reserved.
@@ -61,9 +91,9 @@ def generatePowerShellCommandFromMethod(method, file):
 
 #region Using Directives
 using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Management.Automation;
-using SolidFire.Core.Validation;
 using SolidFire.Core;
 using SolidFire.Element.Api;
 #endregion
@@ -73,7 +103,7 @@ namespace """ + getNamespace(file) + """
 	if("documentation" in method.keys()):
 		PSCommand += """
 	/// <summary>
-	/// """+method["documentation"]+"""
+	/// """+"\n\t/// ".join(getDocumentation(method))+"""
 	/// </summary>"""
 	PSCommand += """
 	[RunInstaller(true)]
@@ -86,10 +116,10 @@ namespace """ + getNamespace(file) + """
 			if("documentation" in parameter.keys()):
 				PSCommand += """
 		/// <summary>
-		/// """+method["documentation"]+"""
+		/// """+"\n\t\t/// ".join(getDocumentation(parameter))+"""
 		/// </summary>"""
 			PSCommand += """
-		private """+getPrivateParameterType(parameter["type"])+""" """+getPrivateParameterName(parameter["name"])
+		private """+getPrivateParameterType(parameter["type"], types)+""" """+getPrivateParameterName(parameter["name"])+""";"""
 	PSCommand += """
 		#endregion
 		
@@ -97,8 +127,8 @@ namespace """ + getNamespace(file) + """
 	if("params" in method.keys()):
 		for parameter in method["params"]:
 			PSCommand += """
-		[Parameter("""+",".join(getParameterAttributeOptions(parameter))+""")]
-		public """+getPrivateParameterType(parameter["type"])+""" """+getPublicParameterName(parameter["name"])+"""
+		[Parameter("""+", ".join(getParameterAttributeOptions(parameter))+""")]
+		public """+getPrivateParameterType(parameter["type"], types)+""" """+getPublicParameterName(parameter["name"])+"""
 		{
 			get
 			{
@@ -116,24 +146,28 @@ namespace """ + getNamespace(file) + """
 		protected override void BeginProcessing()
 		{
 			base.BeginProcessing();
-			CheckConnection();
+			CheckConnection("""
+	if("since" in method.keys()):
+		PSCommand += method["since"].split('.')[0]
+	PSCommand += """);
 		}
 
 		protected override void ProcessRecord()
 		{
-			base.ProcessRecord();
+			base.ProcessRecord();"""
+	if(isRequest(method)):
+		PSCommand += """
 			var request = new """+getClassName(method["name"])+"""Request();"""
 	if("params" in method.keys()):
 		for parameter in method["params"]:
 			PSCommand += """
 			request."""+getPublicParameterName(parameter["name"])+""" = """+getPrivateParameterName(parameter["name"])+""";"""
 	PSCommand += """
-			var objsFromAPI = SendRequest<"""+getClassName(method["name"])+"""Result>(\""""+getClassName(method["name"])+"""\", request);
-			
-			WriteObject(objsFromAPI.Result, true);
+			var objsFromAPI = SendRequest<"""+getClassName(method["name"])+"""Result>(\""""+getClassName(method["name"])+"""\""""+(", request" if isRequest(method) else "") +""");
+			WriteObject(objsFromAPI.Select(obj => obj.Result), true);
 		}
 		#endregion
-    }
+	}
 }
 		"""
 	return PSCommand
@@ -152,10 +186,10 @@ def generatePowerShellCommandsFromJSON(json, file):
 		if(method[u'release'] != "Public"):
 			continue
 		cmdletName = getCmdletName(method["name"])
-		newFilePath = "JSONInputForPoSHGen\\"+file.split('.')[0]+"\\"+method["name"]+".cs"
+		newFilePath = "C:\\Projects2016\\PowerShell\\SolidFire\\"+file.split('.')[0]+"\\"+getCmdletName(method["name"])+".cs"
 		print(newFilePath)
 		with open(newFilePath, 'w') as f:
-			f.write(generatePowerShellCommandFromMethod(method, file))
+			f.write(generatePowerShellCommandFromMethod(method, file, types))
 
 rootdir = "JSONInputForPoSHGen"
 for root, subFolders, files in os.walk(rootdir):
@@ -166,6 +200,5 @@ for root, subFolders, files in os.walk(rootdir):
 				data = f.read()
 			fileJson = json.loads(data)
 			generatePowerShellCommandsFromJSON(fileJson, file)
-			break
 		
 		

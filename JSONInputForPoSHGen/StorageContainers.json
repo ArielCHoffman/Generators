@@ -1,0 +1,240 @@
+{
+    "types":  [
+                  {
+                      "name":  "StorageContainerID",
+                      "alias":  "UUID"
+                  },
+                  {
+                      "name":  "StorageContainer",
+                      "members":  [
+                                      {
+                                          "name":  "name",
+                                          "type":  "string"
+                                      },
+                                      {
+                                          "name":  "storageContainerID",
+                                          "type":  "StorageContainerID"
+                                      },
+                                      {
+                                          "name":  "accountID",
+                                          "type":  "integer"
+                                      },
+                                      {
+                                          "name":  "protocolEndpointType",
+                                          "type":  "string"
+                                      },
+                                      {
+                                          "name":  "initiatorSecret",
+                                          "type":  "CHAPSecret"
+                                      },
+                                      {
+                                          "name":  "targetSecret",
+                                          "type":  "CHAPSecret"
+                                      },
+                                      {
+                                          "name":  "status",
+                                          "type":  "string"
+                                      }
+                                  ]
+                  },
+                  {
+                      "name":  "CreateStorageContainerResult",
+                      "members":  [
+                                      {
+                                          "name":  "storageContainer",
+                                          "type":  "StorageContainer"
+                                      }
+                                  ]
+                  },
+                  {
+                      "name":  "ListStorageContainersResult",
+                      "members":  [
+                                      {
+                                          "name":  "storageContainers",
+                                          "type":  [
+                                                       "StorageContainer"
+                                                   ]
+                                      }
+                                  ]
+                  },
+                  {
+                      "name":  "DeleteStorageContainerResult",
+                      "members":  [
+
+                                  ]
+                  },
+                  {
+                      "name":  "GetStorageContainerEfficiencyResult",
+                      "members":  [
+                                      {
+                                          "type":  {
+                                                       "name":  "float"
+                                                   },
+                                          "name":  "compression"
+                                      },
+                                      {
+                                          "type":  {
+                                                       "name":  "float"
+                                                   },
+                                          "name":  "deduplication"
+                                      },
+                                      {
+                                          "type":  ["integer"],
+                                          "documentation":  "The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.",
+                                          "name":  "missingVolumes"
+                                      },
+                                      {
+                                          "type":  {
+                                                       "name":  "float"
+                                                   },
+                                          "name":  "thinProvisioning"
+                                      },
+                                      {
+                                          "type":  {
+                                                       "name":  "string"
+                                                   },
+                                          "documentation":  "The last time efficiency data was collected after Garbage Collection (GC).",
+                                          "name":  "timestamp"
+                                      }
+                                  ]
+                  }
+              ],
+    "methods":  [
+                    {
+                        "name":  "CreateStorageContainer",
+                        "documentation":  "Creates a new VVols storage container.",
+                        "release":  "Public",
+                        "params":  [
+                                       {
+                                           "name":  "name",
+                                           "type":  "string",
+                                           "documentation":  "Name of the storage container."
+                                       },
+                                       {
+                                           "name":  "callingHostID",
+                                           "type":  {
+                                                        "name":  "UUID",
+                                                        "optional":  true
+                                                    }
+                                       },
+                                       {
+                                           "name":  "initiatorSecret",
+                                           "type":  {
+                                                        "name":  "CHAPSecret",
+                                                        "optional":  true
+                                                    }
+                                       },
+                                       {
+                                           "name":  "targetSecret",
+                                           "type":  {
+                                                        "name":  "CHAPSecret",
+                                                        "optional":  true
+                                                    }
+                                       }
+                                   ],
+                        "returnInfo":  {
+                                           "type":  "CreateStorageContainerResult"
+                                       }
+                    },
+                    {
+                        "name":  "DeleteStorageContainers",
+                        "documentation":  "Deletes a storage container from the system.",
+                        "release":  "Public",
+                        "params":  [
+                                       {
+                                           "name":  "storageContainerIDs",
+                                           "type":  [
+                                                        "StorageContainerID"
+                                                    ],
+                                           "documentation":  "list of storageContainerID of the storage container to delete."
+                                       },
+                                       {
+                                           "name":  "callingHostID",
+                                           "type":  {
+                                                        "name":  "UUID",
+                                                        "optional":  true
+                                                    }
+                                       }
+                                   ],
+                        "returnInfo":  {
+                                           "type":  "DeleteStorageContainerResult"
+                                       }
+                    },
+                    {
+                        "name":  "ModifyStorageContainer",
+                        "documentation":  "Modifies an existing storage container.",
+                        "release":  "Public",
+                        "params":  [
+                                       {
+                                           "name":  "initiatorSecret",
+                                           "type":  {
+                                                        "name":  "CHAPSecret",
+                                                        "optional":  true
+                                                    }
+                                       },
+                                       {
+                                           "name":  "targetSecret",
+                                           "type":  {
+                                                        "name":  "CHAPSecret",
+                                                        "optional":  true
+                                                    }
+                                       },
+                                       {
+                                           "name":  "callingHostID",
+                                           "type":  {
+                                                        "name":  "UUID",
+                                                        "optional":  true
+                                                    }
+                                       }
+                                   ],
+                        "returnInfo":  {
+                                           "type":  "CreateStorageContainerResult"
+                                       }
+                    },
+                    {
+                        "name":  "ListStorageContainers",
+                        "documentation":  "Gets information for all storage containers currently in the system.",
+                        "release":  "Public",
+                        "params":  [
+                                       {
+                                           "name":  "storageContainerIDs",
+                                           "type":  {
+                                                        "name":  [
+                                                                     "StorageContainerID"
+                                                                 ],
+                                                        "optional":  true
+                                                    },
+                                           "documentation":  "List of storage containers to get"
+                                       },
+                                       {
+                                           "name":  "callingHostID",
+                                           "type":  {
+                                                        "name":  "UUID",
+                                                        "optional":  true
+                                                    }
+                                       }
+                                   ],
+                        "returnInfo":  {
+                                           "type":  "ListStorageContainersResult"
+                                       }
+                    },
+                    {
+                        "name":  "GetStorageContainerEfficiency",
+                        "returnInfo":  {
+                                           "type":  "GetStorageContainerEfficiencyResult"
+                                       },
+                        "documentation":  "GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.",
+                        "release":  "Public",
+                        "params":  [
+                                       {
+                                           "name":  "storageContainerID",
+                                           "documentation":  "The ID of the storage container for which to retrieve efficiency information.",
+                                           "type":  {
+                                                        "optional":  false,
+                                                        "name":  "integer"
+                                                    }
+                                       }
+                                   ]
+                    }
+                ]
+}

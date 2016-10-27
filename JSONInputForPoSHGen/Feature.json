@@ -1,0 +1,81 @@
+{
+  "types": [
+	{
+      "name": "GetFeatureStatusResult",
+      "members": [
+        {
+          "name": "features",
+          "type": ["FeatureObject"],
+          "documentation": "An array of feature objects indicating the feature name and its status."
+        }
+      ]
+    },
+    {
+      "name": "FeatureObject",
+      "members": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "documentation": "True if the feature is enabled, otherwise false."
+        },
+        {
+          "name": "feature",
+          "type": "string",
+          "documentation": "The name of the feature."
+        }
+      ]
+    },
+    {
+      "name": "EnableFeatureResult",
+      "members": []
+    }
+  ],
+  "methods": [
+    {
+      "name": "GetFeatureStatus",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "GetFeatureStatus allows you to retrieve the status of a cluster feature."
+      ],
+      "params": [
+        {
+          "name": "feature",
+          "type": {
+            "name" : "string",
+            "optional" : true
+          },
+
+          "documentation":[
+            "Valid values:<br/>",
+            "<b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature."
+          ]
+        }
+      ],
+      "returnInfo": {
+        "type": "GetFeatureStatusResult"
+      }
+    },
+    {
+      "name": "EnableFeature",
+      "since" : "9.0",
+      "release": "Public",
+      "documentation": [
+        "EnableFeature allows you to enable cluster features that are disabled by default."
+      ],
+      "params": [
+        {
+          "name": "feature",
+          "type": "string",
+          "documentation":[
+            "Valid values:<br/>",
+            "<b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature."
+          ]
+        }
+      ],
+      "returnInfo": {
+        "type": "EnableFeatureResult"
+      }
+    }
+  ]
+}

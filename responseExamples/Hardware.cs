@@ -1,7 +1,12 @@
+
+using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
+using SolidFire.Element.Api;
+using SolidFire.Core;
 using Moq;
 using System.Linq;
 using SolidFire.SDK.Adaptor;
-using System;
 
 namespace Element.Tests
 {
@@ -1805,6 +1810,6 @@ namespace Element.Tests
 			Assert.IsTrue(result.NvramInfo.Details.Smart.MediaErrors == "0", "Died on .NvramInfo.Details.Smart.MediaErrors");
 			Assert.IsTrue(result.NvramInfo.Details.Smart.PowerOnHours == "18611", "Died on .NvramInfo.Details.Smart.PowerOnHours");
 			
-        }"
+        }
     }
 }

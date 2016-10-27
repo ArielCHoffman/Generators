@@ -58,13 +58,18 @@ def makeAssert(result, assertList, keyPath):
 	
 for root, subFolders, files in os.walk("responseExamples"):
 	for folder in subFolders:
-		unitTestOutput = open(folder+".cs", 'w');
+		unitTestOutput = open("responseExamples\\"+folder+".cs", 'w');
 		subFolderPath = os.path.join(root, folder)
 		files = glob.glob(subFolderPath+"\*")
-		fileHeader = """using Moq;
+		fileHeader = """
+using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
+using SolidFire.Element.Api;
+using SolidFire.Core;
+using Moq;
 using System.Linq;
 using SolidFire.SDK.Adaptor;
-using System;
 
 namespace Element.Tests
 {
@@ -101,7 +106,7 @@ namespace Element.Tests
 			methodCloser = """
         }"""
 			unitTestOutput.write(methodCloser)
-		fileCloser = """"
+		fileCloser = """
     }
 }
 """

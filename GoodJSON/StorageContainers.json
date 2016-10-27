@@ -60,7 +60,7 @@
                     }
                 }
             ], 
-            "release": "Incubate"
+            "release": "Public"
         }, 
         {
             "name": "GetStorageContainerEfficiency", 
@@ -78,7 +78,7 @@
                     }
                 }
             ], 
-            "release": "Incubate"
+            "release": "Public"
         }
     ], 
     "types": [

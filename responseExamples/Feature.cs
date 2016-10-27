@@ -1,7 +1,12 @@
+
+using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
+using SolidFire.Element.Api;
+using SolidFire.Core;
 using Moq;
 using System.Linq;
 using SolidFire.SDK.Adaptor;
-using System;
 
 namespace Element.Tests
 {
@@ -30,6 +35,6 @@ namespace Element.Tests
             GetFeatureStatusResult result = sfe.GetFeatureStatus();
 			Assert.IsTrue(result.Features[0].Feature == "Vvols", "Died on .Features[0].Feature");
 			
-        }"
+        }
     }
 }
