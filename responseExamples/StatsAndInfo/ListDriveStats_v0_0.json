@@ -1,0 +1,34 @@
+{
+  "id": 1,
+  "result": {
+    "driveStats": [
+      {
+        "driveID": 22,
+        "failedDieCount": 0,
+        "lifeRemainingPercent": 84,
+        "lifetimeReadBytes": 30171004403712,
+        "lifetimeWriteBytes": 103464755527680,
+        "powerOnHours": 17736,
+        "readBytes": 14656542,
+         "readOps": 3624,
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "timestamp": "2016-03-01T00:19:24.782735Z",
+        "totalCapacity": 300069052416,
+        "usedCapacity": 1783735635,
+        "usedMemory": 879165440,
+        "writeBytes": 2462169894,
+        "writeOps": 608802
+      }
+    ],
+    "errors": [
+      {
+        "driveID": 23,
+        "exception": {
+          "message": "xStatCheckpointDoesNotExist",
+          "name": "xStatCheckpointDoesNotExist"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [],
+      "initiatorIDs": [
+        95
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian: 01: a31b1d799d5c"
+      ],
+      "name": "myaccessgroup",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        327
+      ]
+    },
+    "volumeAccessGroupID": 96
+  }
+}

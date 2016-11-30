@@ -1,0 +1,91 @@
+{
+  "id": 1,
+  "result": {
+    "volumes": [
+      {
+        "access": "replicationTarget",
+        "accountID": 1,
+        "attributes": {
+          "name1": "value1",
+          "name2": "value2",
+          "name3": "value3"
+        },
+        "blockSize": 4096,
+        "createTime": "2016-04-06T17:25:13Z",
+        "deleteTime": "",
+        "enable512e": false,
+        "iqn": "iqn.2010-01.com.solidfire:jo73.2",
+        "name": "doctest1",
+        "purgeTime": "",
+        "qos": {
+          "burstIOPS": 150,
+          "burstTime": 60,
+          "curve": {
+            "4096": 100,
+            "8192": 160,
+            "16384": 270,
+            "32768": 500,
+            "65536": 1000,
+            "131072": 1950,
+            "262144": 3900,
+            "524288": 7600,
+            "1048576": 15000
+          },
+          "maxIOPS": 100,
+          "minIOPS": 50
+        },
+        "scsiEUIDeviceID": "6a6f373300000002f47acc0100000000",
+        "scsiNAADeviceID": "6f47acc1000000006a6f373300000002",
+        "sliceCount": 1,
+        "status": "active",
+        "totalSize": 1000341504,
+        "virtualVolumeID": null,
+        "volumeAccessGroups": [],
+        "volumeID": 2,
+        "volumePairs": []
+      },
+      {
+        "access": "replicationTarget",
+        "accountID": 1,
+        "attributes": {
+          "name1": "value1",
+          "name2": "value2",
+          "name3": "value3"
+        },
+        "blockSize": 4096,
+        "createTime": "2016-04-06T17:26:31Z",
+        "deleteTime": "",
+        "enable512e": false,
+        "iqn": "iqn.2010-01.com.solidfire:jo73.3",
+        "name": "doctest2",
+        "purgeTime": "",
+        "qos": {
+          "burstIOPS": 150,
+          "burstTime": 60,
+          "curve": {
+            "4096": 100,
+            "8192": 160,
+            "16384": 270,
+            "32768": 500,
+            "65536": 1000,
+            "131072": 1950,
+            "262144": 3900,
+            "524288": 7600,
+            "1048576": 15000
+          },
+          "maxIOPS": 100,
+          "minIOPS": 50
+        },
+        "scsiEUIDeviceID": "6a6f373300000003f47acc0100000000",
+        "scsiNAADeviceID": "6f47acc1000000006a6f373300000003",
+        "sliceCount": 1,
+        "status": "active",
+        "totalSize": 1000341504,
+        "virtualVolumeID": null,
+        "volumeAccessGroups": [],
+        "volumeID": 3,
+        "volumePairs": []
+      }
+    ]
+  }
+}

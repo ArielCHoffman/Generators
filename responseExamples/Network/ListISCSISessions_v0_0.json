@@ -1,0 +1,63 @@
+{
+  "id": 7,
+  "result": {
+    "sessions": [
+      {
+        "accountID": 1,
+        "accountName": "myaccount",
+        "createTime": "2016-08-12T16:40:04.827786Z",
+        "driveID": 1,
+        "initiator": {
+          "alias": "",
+          "attributes": {},
+          "initiatorID": 2,
+          "initiatorName": "iqn.2010-01.net.solidfire.eng:zdc-3",
+          "volumeAccessGroups": [
+            1
+          ]
+        },
+        "initiatorIP": "10.30.76.3:33994",
+        "initiatorName": "iqn.2010-01.net.solidfire.eng:zdc-3",
+        "initiatorPortName": "iqn.2010-01.net.solidfire.eng:zdc-3,i,0x23d070000",
+        "initiatorSessionID": 9613803520,
+        "nodeID": 1,
+        "serviceID": 4,
+        "sessionID": 17179882017,
+        "targetIP": "10.30.65.134:3260",
+        "targetName": "iqn.2010-01.com.solidfire:dvmj.aawuanfmxukfnffl.3",
+        "targetPortName": "iqn.2010-01.com.solidfire:dvmj.aawuanfmxukfnffl.3,t,0x1",
+        "virtualNetworkID": 0,
+        "volumeID": 3,
+        "volumeInstance": 139922648856576
+      },
+      {
+        "accountID": 1,
+        "accountName": "myaccount",
+        "createTime": "2016-08-12T16:40:04.827831Z",
+        "driveID": 1,
+        "initiator": {
+          "alias": "",
+          "attributes": {},
+          "initiatorID": 2,
+          "initiatorName": "iqn.2010-01.net.solidfire.eng:zdc-3",
+          "volumeAccessGroups": [
+            1
+          ]
+        },
+        "initiatorIP": "10.30.76.3:33995",
+        "initiatorName": "iqn.2010-01.net.solidfire.eng:zdc-3",
+        "initiatorPortName": "iqn.2010-01.net.solidfire.eng:zdc-3,i,0x23d080000",
+        "initiatorSessionID": 9613869056,
+        "nodeID": 1,
+        "serviceID": 4,
+        "sessionID": 17179882018,
+        "targetIP": "10.30.65.134:3260",
+        "targetName": "iqn.2010-01.com.solidfire:dvmj.trruw982e4vr2cgf.9",
+        "targetPortName": "iqn.2010-01.com.solidfire:dvmj.trruw982e4vr2cgf.9,t,0x1",
+        "virtualNetworkID": 0,
+        "volumeID": 9,
+        "volumeInstance": 139922531221504
+      }
+    ]
+  }
+}

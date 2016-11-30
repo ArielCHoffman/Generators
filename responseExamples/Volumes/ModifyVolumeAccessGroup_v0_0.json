@@ -1,0 +1,24 @@
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [
+        114,
+        115
+      ],
+      "initiators": [
+        "iqn.1998-01.com.vmware:desk1-esx1-577b283a",
+        "iqn.1998-01.com.vmware:donesq-esx1-421b281b"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}

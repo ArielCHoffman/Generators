@@ -41,6 +41,8 @@ def getTypes(object, objectName):
 def makeAssert(result, assertList, keyPath):
 	if(type(result) is unicode):
 		return assertList + ["Assert.IsTrue(result"+keyPath+" == \""+result+"\", \"Died on "+keyPath+"\");\n\t\t\t"]
+	if(type(result) is bool or type(result) is int):
+		return assertList + ["Assert.IsTrue(result"+keyPath+" == "+str(result)+", \"Died on "+keyPath+"\");\n\t\t\t"]
 	if(type(result) is dict):
 		val = []
 		for key in result.keys():

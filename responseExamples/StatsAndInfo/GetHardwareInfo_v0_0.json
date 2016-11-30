@@ -1,0 +1,49 @@
+{
+  "id": 1,
+  "result": {
+    "hardwareInfo": {
+      "bus": {
+        "core_DMI:0200": {
+          "description": "Motherboard",
+          "physid": "0",
+          "product": "0A47AA",
+          "serial": "..AB123456C12354.",
+          "version": "C07"
+        }
+      },
+      "driveHardware": [
+        {
+          "canonicalName": "sdh",
+          "connected": true,
+          "dev": 2160,
+          "devPath": "/dev/disk/by-path/pci-0000:41:00.0-sas-0x500056b37789abf0-lun-0",
+          "driveType": "Block",
+          "lifeRemainingPercent": 92,
+          "lifetimeReadBytes": 175436696911872,
+          "lifetimeWriteBytes": 81941097349120,
+          "name": "scsi-SATA_INTEL_SSDSC2BB3BTWL12345686300AAA",
+          "path": "/dev/sdh",
+          "pathLink": "/dev/disk/by-path/pci-0000:41:00.0-sas-0x500056b37789abf0-lun-0",
+          "powerOnHours": 17246,
+          "product": "INTEL SSDAA2AA300A4",
+          "reallocatedSectors": 0,
+          "reserveCapacityPercent": 100,
+          "scsiCompatId": "scsi-SATA_INTEL_SSDSC2BB3BTWL12345686300AAA",
+          "scsiState": "Running",
+          "securityAtMaximum": false,
+          "securityEnabled": false,
+          "securityFrozen": false,
+          "securityLocked": false,
+          "securitySupported": true,
+          "serial": "AAAA33710886300AAA",
+          "size": 300069052416,
+          "slot": 1,
+          "smartSsdWriteCapable": false,
+          "uuid": "aea178b9-c336-6bab-a61d-87b615e8120c",
+          "vendor": "Intel",
+          "version": "D2010370"
+        }
+      ]
+    }
+  }
+}

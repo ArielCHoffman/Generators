@@ -1,0 +1,39 @@
+{
+  "id": 1,
+  "result": {
+    "protocolEndpoints": [
+      {
+        "primaryProviderID": 1,
+        "protocolEndpointID": "1387e257-d2e3-4446-be6d-39db71583e7b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000016970687200000000",
+        "secondaryProviderID": 2
+      },
+      {
+        "primaryProviderID": 2,
+        "protocolEndpointID": "1f16ed86-3f31-4c76-b004-a1251187700b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000026970687200000000",
+        "secondaryProviderID": 3
+      },
+      {
+        "primaryProviderID": 4,
+        "protocolEndpointID": "c6458dfe-9803-4350-bb4e-68a3feb7e830",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000046970687200000000",
+        "secondaryProviderID": 1
+      },
+      {
+        "primaryProviderID": 3,
+        "protocolEndpointID": "f3e7911d-0e86-4776-97db-7468c272213f",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000036970687200000000",
+        "secondaryProviderID": 4
+      }
+    ]
+  }
+}

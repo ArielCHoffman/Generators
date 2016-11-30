@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroups": [
+      {
+        "attributes": {},
+        "deletedVolumes": [],
+        "initiatorIDs": [
+          1
+        ],
+        "initiators": [
+          "iqn.1998-01.com.vmware:sra-site1-esxi"
+        ],
+        "name": "sra-site1-esxi",
+        "volumeAccessGroupID": 1,
+        "volumes": [
+          2,
+          4
+        ]
+      },
+      {
+        "attributes": {},
+        "deletedVolumes": [],
+        "initiatorIDs": [
+          4,
+          5
+        ],
+        "initiators": [
+          "21:00:00:0e:1e:1b:2a:40",
+          "21:00:00:0e:1e:1b:2a:41"
+        ],
+        "name": "loyds",
+        "volumeAccessGroupID": 2,
+        "volumes": [
+          5
+        ]
+      }
+    ]
+  }
+}

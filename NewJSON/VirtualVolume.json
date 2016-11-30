@@ -1,6 +1,58 @@
 {
     "methods": [
         {
+            "name": "ListVirtualVolumes", 
+            "returnInfo": {
+                "type": "ListVirtualVolumesResult"
+            }, 
+            "documentation": "ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.", 
+            "params": [
+                {
+                    "name": "details", 
+                    "documentation": "Possible values:true: Include more details about each VVOL in the response.false: Include the standard level of detail about each VVOL in the response.", 
+                    "Default Value": "false", 
+                    "type": {
+                        "name": "boolean"
+                    }
+                }, 
+                {
+                    "name": "limit", 
+                    "documentation": "The maximum number of virtual volumes to list.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "integer"
+                    }
+                }, 
+                {
+                    "name": "recursive", 
+                    "documentation": "Possible values:true: Include information about the children of each VVOL in the response.false: Do not include information about the children of each VVOL in the response.", 
+                    "Default Value": "false", 
+                    "type": {
+                        "name": "boolean"
+                    }
+                }, 
+                {
+                    "name": "startVirtualVolumeID", 
+                    "documentation": "The ID of the virtual volume at which to begin the list.", 
+                    "type": {
+                        "optional": true, 
+                        "name": "UUIDType"
+                    }
+                }, 
+                {
+                    "name": "virtualVolumeIDs", 
+                    "documentation": "A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.", 
+                    "type": {
+                        "optional": true, 
+                        "name": [
+                            "virtualVolumeID UUID"
+                        ]
+                    }
+                }
+            ], 
+            "release": "Private"
+        }, 
+        {
             "release": "Private", 
             "returnInfo": {
                 "type": "GetVirtualVolumeCountResult"
@@ -98,6 +150,27 @@
         }
     ], 
     "types": [
+        {
+            "name": "ListVirtualVolumesResult", 
+            "members": [
+                {
+                    "type": {
+                        "name": "UUID"
+                    }, 
+                    "documentation": "The ID of the next virtual volume in the list.", 
+                    "name": "nextVirtualVolumeID"
+                }, 
+                {
+                    "type": {
+                        "name": [
+                            "virtualVolum"
+                        ]
+                    }, 
+                    "documentation": "A list of objects describing the virtual volumes currently in the system.", 
+                    "name": "virtualVolumes"
+                }
+            ]
+        }, 
         {
             "name": "GetVirtualVolumeCountResult", 
             "members": [

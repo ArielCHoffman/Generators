@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "result": {
+    "nextVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+    "virtualVolumes": [
+      {
+        "bindings": [
+          177
+        ],
+        "children": [],
+        "metadata": {
+          "SFProfileId": "f4e5bade-15a2-4805-bf8e-52318c4ce443",
+          "SFgenerationId": "0",
+          "VMW_ContainerId": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "VMW_VVolName": "asdf",
+          "VMW_VVolType": "Config",
+          "VMW_VmID": "502e0676-e510-ccdd-394c-667f6867fcdf",
+          "VMW_VvolProfile": "f4e5bade-15a2-4805-bf8e-52318c4ce443:0"
+        },
+        "parentVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+        "snapshotID": 0,
+        "snapshotInfo": null,
+        "status": "done",
+        "storageContainer": {
+          "accountID": 1,
+          "initiatorSecret": "B5)D1y10K)8IDN58",
+          "name": "test",
+          "protocolEndpointType": "SCSI",
+          "status": "active",
+          "storageContainerID": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "targetSecret": "qgae@{o{~8\"2U)U^"
+        },
+        "virtualVolumeID": "269d3378-1ca6-4175-a18f-6d4839e5c746",
+        "virtualVolumeType": "config",
+        "volumeID": 166,
+        "volumeInfo": null
+      }
+    ]
+  }
+}

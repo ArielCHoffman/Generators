@@ -1,0 +1,8 @@
+{
+    "id":1,
+    "result": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    }
+}

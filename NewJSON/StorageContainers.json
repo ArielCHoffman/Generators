@@ -113,13 +113,13 @@
             "members": [
                 {
                     "type": {
-                        "name": "Float"
+                        "name": "float"
                     }, 
                     "name": "compression"
                 }, 
                 {
                     "type": {
-                        "name": "Float"
+                        "name": "float"
                     }, 
                     "name": "deduplication"
                 }, 
@@ -134,7 +134,7 @@
                 }, 
                 {
                     "type": {
-                        "name": "Float"
+                        "name": "float"
                     }, 
                     "name": "thinProvisioning"
                 }, 

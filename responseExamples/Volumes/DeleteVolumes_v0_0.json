@@ -1,0 +1,33 @@
+ {
+  "id" : 1,
+  "result": {
+    "volumes" : [ {
+      "access": "readWrite",
+      "accountID": 1,
+      "attributes": {},
+      "blockSize": 4096,
+      "createTime": "2015-03-06T18:50:56Z",
+      "deleteTime": "",
+      "enable512e": false,
+      "iqn": "iqn.2010-01.com.solidfire:pzsr.vclient-030-v00001.1",
+      "name": "vclient-030-v00001",
+      "qos": {
+        "burstIOPS": 15000,
+        "burstTime": 60,
+        "curve": {},
+        "maxIOPS": 15000,
+        "minIOPS": 100
+      },
+      "purgeTime": "",
+      "sliceCount": 1,
+      "scsiEUIDeviceID": "707a737200000001f47acc0100000000",
+      "scsiNAADeviceID": "6f47acc100000000707a737200000001",
+      "status": "active",
+      "totalSize": 10000003072,
+      "virtualVolumeID": 5,
+      "volumeAccessGroups": [],
+      "volumePairs": [],
+      "volumeID": 1
+    } ]
+  }
+}

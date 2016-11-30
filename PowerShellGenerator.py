@@ -71,7 +71,7 @@ def generatePrivateDataRegion(method, types):
 def getParameterAttributeOptions(parameter):
 	parameterAttributeOptions = []
 	if(type(parameter["type"]) is dict and "optional" in parameter["type"].keys()):
-		parameterAttributeOptions += ["Mandatory = " + !bool(str(parameter["type"]["optional"])).lower()]
+		parameterAttributeOptions += ["Mandatory = " + str(not bool(str(parameter["type"]["optional"]))).lower()]
 	if("documentation" in parameter.keys()):
 		parameterAttributeOptions += ["HelpMessage = \"" + re.sub('"', r'\"', str(parameter["documentation"])) + "\""]
 		print(parameterAttributeOptions)
@@ -186,9 +186,11 @@ def generatePowerShellCommandsFromJSON(json, file):
 		if(method[u'release'] != "Public"):
 			continue
 		cmdletName = getCmdletName(method["name"])
-		newFilePath = "C:\\Projects2016\\PowerShell\\SolidFire\\"+file.split('.')[0]+"\\"+getCmdletName(method["name"])+".cs"
+		#newFilePath = "C:\\Projects2016\\PowerShell\\SolidFire\\"+file.split('.')[0]+"\\"+getCmdletName(method["name"])+".cs"
+		newFilePath = "PoSH\\"+getCmdletName(method["name"])+".cs"
 		print(newFilePath)
 		with open(newFilePath, 'w') as f:
+			print("Writing, "+newFilePath)
 			f.write(generatePowerShellCommandFromMethod(method, file, types))
 
 rootdir = "JSONInputForPoSHGen"

@@ -1,0 +1,21 @@
+{
+  "id" : 1,
+  "result" : {
+     "sessions" : [
+    {
+       "initiatorWWPN" : "21:00:00:0e:1e:14:af:40",
+       "nodeID" : 5,
+       "serviceID" : 21,
+       "targetWWPN": "5f:47:ac:c0:00:00:00:10",
+       "volumeAccessGroupID": 7
+    },
+    {
+       "initiatorWWPN" : "21:00:00:0e:1e:14:af:40",
+       "nodeID" : 1,
+       "serviceID" : 22,
+       "targetWWPN": "5f:47:ac:c0:00:00:00:11",
+       "volumeAccessGroupID": 7
+    }
+    ]
+  }
+}

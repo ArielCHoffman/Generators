@@ -220,13 +220,14 @@ for object in myAggregatedTypes:
 
 desiredMethodGroup = dict()
 desiredMethodGroup["Hardware"] = ["GetClusterHardwareInfo","GetHardwareConfig","GetNodeHardwareInfo","GetNvramInfo"]
-desiredMethodGroup["VirtualVolume"] = ["GetVirtualVolumeCount","ListVirtualVolumeBindings","ListVirtualVolumeHosts","ListVirtualVolumeTasks","ListVolumeStatsByVirtualVolume"]
+desiredMethodGroup["VirtualVolume"] = ["ListVirtualVolumes","GetVirtualVolumeCount","ListVirtualVolumeBindings","ListVirtualVolumeHosts","ListVirtualVolumeTasks","ListVolumeStatsByVirtualVolume"]
 desiredMethodGroup["Features"] = ["EnableFeature","GetFeatureStatus"]
 desiredMethodGroup["StorageContainers"] = ["CreateStorageContainer","GetStorageContainer","DeleteStorageContainer","ListStorageContainers","GetStorageContainerEfficiency"]
 desiredMethodGroup["Initiators"] = ["CreateInitiators","ListInitiators","DeleteInitiators","ModifyInitiators"]
 desiredMethodGroup["Volumes"] = ["DeleteVolumes","ModifyVolumes","PurgeDeletedVolumes","SetDefaultQoS","ModifyVolumeAccessGroup","CreateVolumeAccessGroup","ListVolumeAccessGroups"]
 desiredMethodGroup["Clones"] = ["ListAsyncResults","CancelClone","CancelGroupClone","CopyVolume"]
 desiredMethodGroup["Other"] = ["GetHardwareInfo","ListDriveStats","ListVolumeStats","ListISCSISessions","ListFibreChannelSessions","GetLimits"]
+desiredMethodGroup["Current"] = ["ListVolumeStatsByVirtualVolume", "GetHardwareInfo", "ListDriveStats", "ListVolumeStats", "ListISCSISessions", "ListFibreChannelSessions", "GetLimits", "GetNetworkConfig"]
 
 for key in desiredMethodGroup.keys():
 	output= dict()

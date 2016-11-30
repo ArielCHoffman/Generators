@@ -1,0 +1,195 @@
+{
+  "id": null,
+  "result":
+  {
+    "network":
+    {
+      "Bond10G":
+      {
+        "#default": false,
+        "address": "192.168.65.161",
+        "auto": true,
+        "bond-downdelay": "200",
+        "bond-fail_over_mac": "None",
+        "bond-miimon": "100",
+        "bond-mode": "ActivePassive",
+        "bond-primary_reselect": "Failure",
+        "bond-slaves": "eth0 eth1",
+        "bond-updelay": "200",
+        "dns-nameservers": "",
+        "dns-search": "",
+        "family": "inet",
+        "gateway": "192.168.95.254",
+        "macAddress": "d4:ae:52:8a:6c:77",
+        "macAddressPermanent": "00:00:00:00:00:00",
+        "method": "static",
+        "mtu": "9000",
+        "netmask": "255.255.224.0",
+        "network": "192.168.64.0",
+        "physical":
+        {
+          "address": "192.168.65.161",
+          "macAddress": "d4:ae:52:8a:6c:77",
+          "macAddressPermanent": "00:00:00:00:00:00",
+          "mtu": "9000",
+          "netmask": "255.255.224.0",
+          "network": "192.168.64.0",
+          "upAndRunning": true
+        },
+        "routes": [],
+        "status": "UpAndRunning",
+        "symmetricRouteRules":
+        [
+          "ip route add 192.168.64.0/19 dev Bond10G src 192.168.65.161 table Bond10G",
+          "ip route add default via 192.168.95.254 dev Bond10G src 192.168.65.161 table Bond10G",
+          "ip rule add from 192.168.65.161 table Bond10G"
+        ],
+        "upAndRunning": true,
+        "virtualNetworkTag": "2064"
+      },
+      "Bond1G":
+      {
+        "#default": true,
+        "address": "10.30.65.161",
+        "auto": true,
+        "bond-downdelay": "200",
+        "bond-fail_over_mac": "None",
+        "bond-miimon": "100",
+        "bond-mode": "ActivePassive",
+        "bond-primary_reselect": "Failure",
+        "bond-slaves": "eth2 eth3",
+        "bond-updelay": "200",
+        "dns-nameservers": "",
+        "dns-search": "",
+        "family": "inet",
+        "gateway": "10.30.95.254",
+        "macAddress": "d4:ae:52:8a:6c:7b",
+        "macAddressPermanent": "00:00:00:00:00:00",
+        "method": "static",
+        "mtu": "1500",
+        "netmask": "255.255.224.0",
+        "network": "10.30.64.0",
+        "physical":
+        {
+          "address": "10.30.65.161",
+          "macAddress": "d4:ae:52:8a:6c:7b",
+          "macAddressPermanent": "00:00:00:00:00:00",
+          "mtu": "1500",
+          "netmask": "255.255.224.0",
+          "network": "10.30.64.0",
+          "upAndRunning": true
+        },
+        "routes": [],
+        "status": "UpAndRunning",
+        "symmetricRouteRules":
+        [
+          "ip route add 10.30.64.0/19 dev Bond1G src 10.30.65.161 table Bond1G",
+          "ip route add default via 10.30.95.254 dev Bond1G src 10.30.65.161 table Bond1G",
+          "ip rule add from 10.30.65.161 table Bond1G",
+          "ip route add default via 10.30.95.254"
+        ],
+        "upAndRunning": true,
+        "virtualNetworkTag": "1064"
+      },
+      "eth0":
+      {
+        "auto": true,
+        "bond-master": "Bond10G",
+        "family": "inet",
+        "macAddress": "d4:ae:52:8a:6c:77",
+        "macAddressPermanent": "d4:ae:52:8a:6c:77",
+        "method": "bond",
+        "physical":
+        {
+          "address": "0.0.0.0",
+          "macAddress": "d4:ae:52:8a:6c:77",
+          "macAddressPermanent": "d4:ae:52:8a:6c:77",
+          "netmask": "N/A",
+          "network": "N/A",
+          "upAndRunning": true
+        },
+        "status": "UpAndRunning",
+        "upAndRunning": true
+      },
+      "eth1":
+      {
+        "auto": true,
+        "bond-master": "Bond10G",
+        "family": "inet",
+        "macAddress": "d4:ae:52:8a:6c:77",
+        "macAddressPermanent": "d4:ae:52:8a:6c:79",
+        "method": "bond",
+        "physical":
+        {
+          "address": "0.0.0.0",
+          "macAddress": "d4:ae:52:8a:6c:77",
+          "macAddressPermanent": "d4:ae:52:8a:6c:79",
+          "netmask": "N/A",
+          "network": "N/A",
+          "upAndRunning": true
+        },
+        "status": "UpAndRunning",
+        "upAndRunning": true
+      },
+      "eth2":
+      {
+        "auto": true,
+        "bond-master": "Bond1G",
+        "family": "inet",
+        "macAddress": "d4:ae:52:8a:6c:7b",
+        "macAddressPermanent": "d4:ae:52:8a:6c:7b",
+        "method": "bond",
+        "physical":
+        {
+          "address": "0.0.0.0",
+          "macAddress": "d4:ae:52:8a:6c:7b",
+          "macAddressPermanent": "d4:ae:52:8a:6c:7b",
+          "netmask": "N/A",
+          "network": "N/A",
+          "upAndRunning": true
+        },
+        "status": "UpAndRunning",
+        "upAndRunning": true
+      },
+      "eth3":
+      {
+        "auto": true,
+        "bond-master": "Bond1G",
+        "family": "inet",
+        "macAddress": "d4:ae:52:8a:6c:7b",
+        "macAddressPermanent": "d4:ae:52:8a:6c:7d",
+        "method": "bond",
+        "physical":
+        {
+          "address": "0.0.0.0",
+          "macAddress": "d4:ae:52:8a:6c:7b",
+          "macAddressPermanent": "d4:ae:52:8a:6c:7d",
+          "netmask": "N/A",
+          "network": "N/A",
+          "upAndRunning": true
+        },
+        "status": "UpAndRunning",
+        "upAndRunning": true
+      },
+      "lo":
+      {
+        "auto": true,
+        "family": "inet",
+        "macAddress": "00:00:00:00:00:00",
+        "macAddressPermanent": "00:00:00:00:00:00",
+        "method": "loopback",
+        "physical":
+        {
+          "address": "0.0.0.0",
+          "macAddress": "00:00:00:00:00:00",
+          "macAddressPermanent": "00:00:00:00:00:00",
+          "netmask": "N/A",
+          "network": "N/A",
+          "upAndRunning": true
+        },
+        "status": "UpAndRunning",
+        "upAndRunning": true
+      }
+    }
+  }
+}
